@@ -17,7 +17,7 @@ def index2(request):
         # Check if the form is valid:
         form = Valueform(request.POST)
         if form.is_valid():
-            parametro = form.busqueda
+            parametro = form.cleaned_data['busqueda']
             listado = get_info_coursera(parametro)
     return render(request, "index2.html", {'listado': listado})
 
