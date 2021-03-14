@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import Valueform
 from .models import Greeting
-import recomendar
+from .recomendar import get_info_coursera
 
 # Create your views here.
 def index(request):
@@ -18,7 +18,7 @@ def index2(request):
         form = Valueform(request.POST)
         if form.is_valid():
             parametro = form.busqueda
-            listado = recomendar.get_info_coursera(parametro)
+            listado = get_info_coursera(parametro)
     return render(request, "index2.html", {'listado': listado})
 
 
