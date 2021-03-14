@@ -7,6 +7,7 @@ cant_pag = 5
 
 listado_cursos = []
 
+
 def get_info_coursera(filtro):
   filtro = 'search?query='+filtro
   for i in range(1,cant_pag):
