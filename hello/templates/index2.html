@@ -23,7 +23,19 @@
     <div class="col-md-6">
       <h3><span class="glyphicon glyphicon-info-sign"></span> RESULTADOS </h3>
       
-
+        {% if listado %}
+           There are {{ listado|length }} records:
+           {% for e in listado %}
+              <h1>Titulo: {{e.Titulo}}</h1>
+              <p>Organizacion: {{e.Organizacion}}</p>
+              <p>Tipo: {{e.Tipo}}</p>
+              <p>Rating: {{e.Rating}}</p>
+              <p>Dificultad: {{e.Dificultad }}</p>
+           {% endfor %}
+        {% else %}
+           No hay cursos
+        {% endif %}        
+        
       <ul>
         <li>This app was deployed to Heroku, either using Git or by using <a href="https://github.com/heroku/python-getting-started">Heroku Button</a> on the repository.</li>
 
