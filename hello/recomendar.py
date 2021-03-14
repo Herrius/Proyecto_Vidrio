@@ -26,5 +26,7 @@ def get_info_coursera(filtro):
         if curso.find('span', class_ = 'enrollment-number') is not None:
             dict['Alumnos Matriculados'] = curso.find('span', class_ = 'enrollment-number').get_text()
         listado_cursos.append(dict)
-        #print(dict)
-        return listado_cursos
+        print(dict)
+    return listado_cursos
+    
+#get_info_coursera('ingles')
