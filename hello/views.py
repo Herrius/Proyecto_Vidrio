@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import Valueform
 from .models import Greeting
 from .recomendar import get_info_coursera
+from .recomendar import get_info_formate
 
 # Create your views here.
 def index(request):
