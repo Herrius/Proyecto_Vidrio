@@ -55,7 +55,7 @@ def get_info_coursera(filtro):
         print(dict)
     return listado_cursos
     
-get_info_coursera('ingles')
+#get_info_coursera('ingles')
 
 '''========================================================================='''
 '''Obtención en Udemy'''
