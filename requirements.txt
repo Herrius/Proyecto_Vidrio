@@ -4,4 +4,4 @@ django-heroku
 requests
 bs4
 selenium
-newspaper
+newspaper3k
