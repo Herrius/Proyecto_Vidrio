@@ -4,6 +4,7 @@ from .forms import Valueform
 from .models import Greeting
 from .recomendar import get_info_coursera
 from .recomendar import get_info_formate
+from .recomendar import get_info_crehana
 
 # Create your views here.
 def index(request):
@@ -21,7 +22,8 @@ def index2(request):
             parametro = form.cleaned_data['busqueda']
             listado = get_info_coursera(parametro)
             listado2 = get_info_formate(parametro)
-    return render(request, "index2.html", {'form': form,'listado': listado,'listado2': listado2})
+            listado3 = get_info_crehana(parametro)
+    return render(request, "index2.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
 
 
 def db(request):

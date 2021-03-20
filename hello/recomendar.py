@@ -78,6 +78,28 @@ def get_info_formate(filtro):
     return listado_cursos
     
 #get_info_formate('ingles')
+
+'''========================================================================='''
+'''Obtención en Crehana'''
+'''========================================================================='''
+
+def get_info_crehana(filtro):
+    url = "https://www.crehana.com/pe/cursos-online/search/?q="+filtro
+    page = requests.get(url)
+    soup_page = BeautifulSoup(page.content, 'html.parser')
+    #print(soup_page)
+    listado_cursos = []
+  
+    for curso in soup_page.findAll("div", { "class" : "sc-1dd6qyt-0 hoLLHg p-4 sm:p-8 md:p-12" }):
+        print(curso)
+        dict={}
+        dict['Titulo'] = curso.find('div').get_text()
+        listado_cursos.append(dict)
+        print(dict)
+    return listado_cursos
+    
+get_info_crehana('ingles')
+    
         
 '''========================================================================='''
 '''Obtención en Udemy'''
