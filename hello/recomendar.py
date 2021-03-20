@@ -21,22 +21,22 @@ def get_info_coursera(filtro):
     page = requests.get(url)
     soup_page = BeautifulSoup(page.content, 'html.parser')
     
-    for curso in soup_page.findAll('script'):
-        print(curso.string)
+    #for curso in soup_page.findAll('script'):
+        #print(curso.string)
         #script_text = curso.find('results')
         #print(script_text)
-        data = json.loads(curso.string)
+        #data = json.loads(curso.string)
         
-    script_text = soup_page.find('script').string
+    #script_text = soup_page.find('script').string
     #print(script_text)
-    relevant = script_text[script_text.index('=')+1:] #removes = and the part before it
+    #relevant = script_text[script_text.index('=')+1:] #removes = and the part before it
     #data = json.loads(relevant) #a dictionary!
     #print(json.dumps(data, indent=4))
     
-    script = soup_page.findAll('script')[1].string
-    data = script.split("bootstrapData['menuMonthWeeks'] = ", 1)[-1].rsplit(';', 1)[0]
+    #script = soup_page.findAll('script')[1].string
+    #data = script.split("bootstrapData['menuMonthWeeks'] = ", 1)[-1].rsplit(';', 1)[0]
     #data = json.loads(data)
-    print(data)
+    #print(data)
     
     for curso in soup_page.findAll("li", { "class" : "ais-InfiniteHits-item" }):
         dict={}
