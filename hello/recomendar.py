@@ -52,11 +52,33 @@ def get_info_coursera(filtro):
         if curso.find('span', class_ = 'enrollment-number') is not None:
             dict['Alumnos Matriculados'] = curso.find('span', class_ = 'enrollment-number').get_text()
         listado_cursos.append(dict)
-        print(dict)
+        #print(dict)
     return listado_cursos
     
 #get_info_coursera('ingles')
 
+'''========================================================================='''
+'''Obtención en Formate.pe'''
+'''========================================================================='''
+
+def get_info_formate(filtro):
+    url = "https://www.formate.pe/resultados-busqueda.php?q="+filtro
+    page = requests.get(url)
+    soup_page = BeautifulSoup(page.content, 'html.parser')
+    #print(soup_page)
+    listado_cursos = []
+  
+    for curso in soup_page.findAll("article", { "class" : "item" }):
+        dict={}
+        dict['Titulo'] = curso.find('h4').get_text()
+        dict['Descripcion'] = curso.find("p", { "class" : "descripcion" }).get_text() 
+        dict['Link'] = 'https://www.formate.pe/' + curso.find('a')['href']
+        listado_cursos.append(dict)
+        #print(dict)
+    return listado_cursos
+    
+#get_info_formate('ingles')
+        
 '''========================================================================='''
 '''Obtención en Udemy'''
 '''========================================================================='''

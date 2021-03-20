@@ -19,7 +19,8 @@ def index2(request):
         if form.is_valid():
             parametro = form.cleaned_data['busqueda']
             listado = get_info_coursera(parametro)
-    return render(request, "index2.html", {'form': form,'listado': listado})
+            listado2 = get_info_formate(parametro)
+    return render(request, "index2.html", {'form': form,'listado': listado,'listado2': listado2})
 
 
 def db(request):
