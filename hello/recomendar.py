@@ -98,7 +98,7 @@ def get_info_crehana(filtro):
         print(dict)
     return listado_cursos
     
-get_info_crehana('ingles')
+#get_info_crehana('ingles')
     
         
 '''========================================================================='''
