@@ -15,7 +15,7 @@ def index(request):
 def home(request):
     # return HttpResponse('Hello from Python!')
     form = Valueform(initial={'busqueda': '',})
-    return render(request, "home.html", {'form': form})
+    return render(request, "info/home.html", {'form': form})
 
 def index2(request):
     # return HttpResponse('Hello from Python!')
