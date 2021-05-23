@@ -111,7 +111,7 @@ def get_info_crehana(filtro):
             data = json.loads(relevant) #a dictionary!
             #print(data.keys())
             for keys in data:
-                texto2 = data[keys].get()
+                texto2 = data[keys]
                 #.get_text().find(filtro)
                 busqueda = texto2.find(filtro)
                 if (busqueda != -1):
