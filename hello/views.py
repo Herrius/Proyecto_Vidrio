@@ -12,6 +12,11 @@ def index(request):
     form = Valueform(initial={'busqueda': '',})
     return render(request, "index.html", {'form': form})
 
+def home(request):
+    # return HttpResponse('Hello from Python!')
+    form = Valueform(initial={'busqueda': '',})
+    return render(request, "home.html", {'form': form})
+
 def index2(request):
     # return HttpResponse('Hello from Python!')
     # If this is a POST request then process the Form data
