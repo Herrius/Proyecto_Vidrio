@@ -357,7 +357,7 @@
     <div class="heading text-center"> 
       <h2>Búsqueda de Cursos</h2>
       <p>Ingrese las palabras para la búsqueda de cursos.</p>
-      <form action="index2" method="post">
+      <form action="home2" method="post">
                 {% csrf_token %}
                 <table>
                 {{ form }}
@@ -401,7 +401,7 @@
            {% endfor %}
         {% else %}
            No hay cursos
-        {% endif %}         
+        {% endif %}        
     </div>
     <!-- Team Member's Details -->
     <!--
@@ -455,14 +455,13 @@
     <div class="container">
       <div class="row">
         <div class="heading text-center"> 
-          <!-- Heading -->
           <h2>Contact Us</h2>
           <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
         </div>
       </div>
+      <!--
       <div class="row mrgn30">
-       	<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
-		<form name="sentMessage" id="contactForm"  novalidate>
+       	<form name="sentMessage" id="contactForm"  novalidate>
 		<h3>Contact Form</h3>
 		<div class="control-group">
 		<div class="controls">
@@ -492,9 +491,8 @@
 		<div id="success"> </div> <!-- For success/fail messages -->
 		<button type="submit" class="btn btn-primary pull-right">Send</button><br />
 		</form>
-      </div>
+      </div>--> 
     </div>
-    <!--/.container--> 
   </div>
 </section>
 <footer>
@@ -576,8 +574,8 @@
 <script src="{% static 'js/jquery.nav.js' %}" type="text/javascript"></script> 
 <script src="{% static 'js/jquery.fittext.js' %}"></script> 
 <script src="{% static 'js/waypoints.js' %}"></script> 
-<script src="{% static 'contact/jqBootstrapValidation.js' %}"></script>
-<script src="{% static 'contact/contact_me.js' %}"></script>
+<!--<script src="{% static 'contact/jqBootstrapValidation.js' %}"></script>-->
+<!--<script src="{% static 'contact/contact_me.js' %}"></script>-->
 <script src="{% static 'js/custom.js' %}" type="text/javascript"></script> 
 <script src="{% static 'js/owl-carousel/owl.carousel.js' %}"></script>
 </body>
