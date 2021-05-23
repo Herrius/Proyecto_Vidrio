@@ -1,32 +1,584 @@
-{% extends "base.html" %}
 {% load static %}
+<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en-gb" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<!--[if lt IE 9]> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <![endif]-->
+<title>PLATAFORMA EDUCATIVA</title>
+<meta name="description" content="">
+<meta name="author" content="WebThemez">
+<!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+<!--[if lte IE 8]>
+		<script type="text/javascript" src="http://explorercanvas.googlecode.com/svn/trunk/excanvas.js"></script>
+	<![endif]-->
+<!--<link rel="stylesheet" href="css/bootstrap.min.css" />-->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'css/isotope.css' %}"  media="screen" />
+<link rel="stylesheet" href="{% static 'js/fancybox/jquery.fancybox.css' %}"  type="text/css" media="screen" />
+<link href="{% static 'css/animate.css' %}"  rel="stylesheet" media="screen">
+<!-- Owl Carousel Assets -->
+<link href="{% static 'js/owl-carousel/owl.carousel.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}"  />
+<!-- Font Awesome -->
+<link href="{% static 'font/css/font-awesome.min.css' %}"  rel="stylesheet">
+</head>
 
-{% block content %}
-
-<div class="jumbotron text-center">
+<body>
+<header class="header">
   <div class="container">
-    <a href="/" class="lang-logo">
-      <img src="{% static 'lang-logo.png'%}">
-    </a>
-    <h1>Plataforma Recomendacion Cursos</h1>
-   </div>
+    <nav class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+        <a href="#" class="navbar-brand scroll-top logo  animated bounceInLeft"><b><i><img src="{% static 'images/logo.png' %}" /></i></b></a> </div>
+      <!--/.navbar-header-->
+      <div id="main-nav" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav" id="mainNav">
+          <li class="active" id="firstLink"><a href="#home" class="scroll-link">Home</a></li>
+          <li><a href="#Features" class="scroll-link">Features</a></li>
+          <li><a href="#aboutUs" class="scroll-link">About Us</a></li>
+          <li><a href="#work" class="scroll-link">Events</a></li>
+          <li><a href="#plans" class="scroll-link">Fees</a></li>
+          <li><a href="#team" class="scroll-link">Management</a></li>
+          <li><a href="#contactUs" class="scroll-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse--> 
+    </nav>
+    <!--/.navbar--> 
+  </div>
+  <!--/.container--> 
+</header>
+<!--/.header-->
+<div id="#top"></div>
+<section id="home">
+  <div class="banner-container"> 
+  	<div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel" data-slide-to="1"></li>
+    <li data-target="#carousel" data-slide-to="2"></li>
+  </ol>
+  <!-- Carousel items -->
+  <div class="carousel-inner">
+    <div class="active item"><img src="{% static 'images/banner-bg.jpg' %}" alt="banner" /></div>
+    <div class="item"><img src="{% static 'images/banner-bg2.jpg' %}" alt="banner" /></div>
+    <div class="item"><img src="{% static 'images/banner-bg3.jpg' %}" alt="banner" /></div>
+  </div>
+  <!-- Carousel nav -->
+  <a class="carousel-control left" href="#carousel" data-slide="prev">&lsaquo;</a>
+  <a class="carousel-control right" href="#carousel" data-slide="next">&rsaquo;</a>
 </div>
-<div class="container">
-  <hr>
-  <div class="row">
-    <div class="col-md-6">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> Busqueda</h3>
+	
+  </div>  
+  
+  <div class="container hero-text2">        
+		<div class="col-md-9">
+		<h2>PLATAFORMA EDUCATIVA</h1>
+			<p> Esta Plataforma ayuda a ...  </p>   
+		</div>  
+		<div class="col-md-3">
+			<a class="btn btn-apply" href="#"><i class="fa fa-play-circle"></i>Apply Now</a>  
+		</div>
+  </div>
+</section>
+<section id="Features" class="page-section colord">
+  <div class="container">
+    <div class="row"> 
+      <!-- item -->
+      <div class="col-md-3 text-center"> 
+	  <div class="box-item">
+	  <i class="circle"><img src="{% static 'images/5.png' %}" alt="" /></i>
+        <h3>Búsqueda de Cursos</h3>
+        <p>Realiza la búsqueda de cursos en las diversas plataformas.</p>
+      </div>
+	   </div>
+      <!-- end: --> 
+      
+      <!-- item -->
+      <div class="col-md-3 text-center">
+	  <div class="box-item">
+	  <i class="circle"> <img src="{% static 'images/1.png' %}" alt="" /></i>
+        <h3>Apoyo en Orientación Vocacional</h3>
+        <p>Apoyo en Orientación Vocacional.</p>
+      </div>
+	   </div>
+      <!-- end: --> 
+      
+      <!-- item -->
+      <div class="col-md-3 text-center">
+	  <div class="box-item">
+	  <i class="circle"> <img src="{% static 'images/2.png' %}" alt="" /></i>
+        <h3>Eventos</h3>
+        <p>Búsqueda de los eventos relacionados a un tema en especial. Webinars, workshops, etc.</p>
+      </div>
+	   </div>
+      <!-- end: --> 
+      
+      <!-- item -->
+      <div class="col-md-3 text-center">
+	  <div class="box-item">
+	  <i class="circle"> <img src="{% static 'images/3.png' %}" alt="" /></i>
+        <h3>Novedades</h3>
+        <p>Novedades.</p>
+      </div>
+      <!-- end:-->
+	   </div>
+    </div>
+  </div>
+  <!--/.container--> 
+</section>
+<!--
+<section id="aboutUs">
+  <div class="container">
+    <div class="heading text-center"> 
+      <h2>About Us</h2>
+      <p>At lorem Ipsum available, but the majority have suffered alteration in some form by injected humour.</p>
+    </div>
+    <div class="row feature design">
+      <div class="area1 columns left">
+        <h3>Our Design tells about quality</h3>
+        <p>Lorem ipsum dolor sit amet, ea eum labitur scsstie percipitoleat fabulas complectitur deterruisset at pro. Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea. No soleat fabulas prodesset vel, ut quo solum dicunt.
+          Nec et jority have suffered alteration. </p>
+        <p>Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea. No soleat fabulas prodesset vel, ut quo solum dicunt.
+          Nec et amet vidisse mentitumsstie percipitoleat fabulas. </p>
+          <a href="#" class="btn">Request Quote</a>
+      </div>
+      <div class="area2 columns feature-media right"> <img src="{% static 'images/about-img.jpg' %}" alt="" width="100%"> </div>
+    </div>
+    <div class="row dataTxt">	
+						<div class="col-md-4 col-sm-6">
+							<h3>Our Education</h3>
+							<p>Lorem ipsum dolor consectetursit amet, consectetur adipiscing elit consectetur euismod </p>
+                            <p>Lorem ipsum dolor sit amet, ea eum labitur scsstie percipitoleat fabulas complectitur deterruisset at pro. Odio quaeque reformidans est eu, expetendis intellegebat has ut, viderer invenire ut his. Has molestie percipit an. Falli volumus efficiantur sed id, ad vel noster propriae. Ius ut etiam vivendo, graeci iudicabit constituto at mea.</p>
+							
+							<br>
+						</div>
+						
+						<div class="col-md-4 col-sm-6">
+							
+							<h3>Courses</h3>
+							<p>Lorem ipsum dolor consectetursit amet, consectetur adipiscing elit consectetur euismod </p>
+                            <ul class="listArrow">
+								<li>Lorem ipsum dolor consectetursit amet, consectet</li>
+								<li>Has molestie percipit an. Falli volumus efficiantur</li>
+								<li>Falli volumus efficiantur sed id, ad vel noster</li>
+								<li>Lorem ipsum dolor consectetursit amet, consectetur</li>
+								<li>Ius ut etiam vivendo, graeci iudicabit constitutoa</li>
+							</ul>
+							</div>
+						
+						<div class="col-md-4 col-sm-6">
+							
+							<h3>Latest News</h3>
+							<p>Lorem ipsum dolor consectetursit amet, consectetur adipiscing elit consectetur euismod </p>
+                            <ul  class="list3">
+								<li>Lorem ipsum dolor consectetursit</li>
+								<li>Has molestie percipit an Falli</li>
+								<li>Falli volumus efficiantur sed id</li>
+								<li>Lorem ipsum dolor consectetu</li> 
+							</ul>
+                            
+							</div>
+						
+					</div>
+  </div>
+</section> 
+-->
+<!--
+<section id="work" class="page-section page">
+  <div class="container text-center">
+    <div class="heading">
+      <h2>Events</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa, alias enim placeat earum quos ab.</p>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="portfolio">
+          <ul class="filters list-inline">
+            <li> <a class="active" data-filter="*" href="#">All</a> </li>
+            <li> <a data-filter=".photography" href="#">Events</a> </li>
+            <li> <a data-filter=".branding" href="#">Games</a> </li>
+            <li> <a data-filter=".web" href="#">Science fair</a> </li>
+          </ul>
+          <ul class="items list-unstyled clearfix animated fadeInRight showing" data-animation="fadeInRight" style="position: relative; height: 438px;">
+            <li class="item branding" style="position: absolute; left: 0px; top: 0px;"> 
+								 			 
+			  <figure class="effect-bubba">
+						<img src="{% static 'images/work/1.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/1.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure> 
+					
+			  </li>
+			  
+            <li class="item photography" style="position: absolute; left: 292px; top: 0px;"> 
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/2.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/2.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure> 
+			  </li>
+            <li class="item branding" style="position: absolute; left: 585px; top: 0px;"> 
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/3.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/3.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure>  
+			  </li>
+            <li class="item photography" style="position: absolute; left: 877px; top: 0px;"> 
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/4.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/4.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure>  
+			  </li>
+            <li class="item photography" style="position: absolute; left: 0px; top: 219px;"> 
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/5.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/5.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure> 
+			  </li>
+            <li class="item web" style="position: absolute; left: 292px; top: 219px;"> 
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/6.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/6.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure> 
+			  </li>
+            <li class="item photography" style="position: absolute; left: 585px; top: 219px;">
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/7.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/7.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure> 
+			  </li>
+            <li class="item web" style="position: absolute; left: 877px; top: 219px;">
+			<figure class="effect-bubba">
+						<img src="{% static 'images/work/8.jpg' %}" alt="img02"/>
+						<figcaption>
+							<h2>B-Events</h2> 
+							<a href="{% static 'images/work/8.jpg' %}" class="fancybox">View more</a> 
+						</figcaption>			
+					</figure> 
+			  </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+<!--
+<section id="plans" class="page-section">
+  <div class="container">
+    <div class="heading text-center"> 
+      <h2>Fees</h2>
+      <p>At lorem Ipsum available, but the majority have suffered alteration in some form by injected humour.</p>
+    </div>
+    <div class="row flat">
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <ul class="plan plan1">
+          <li class="plan-name">Basic </li>
+          <li class="plan-price"> <strong>$29</strong> / month </li>
+          <li> <strong>5GB</strong> Storage </li>
+          <li> <strong>1GB</strong> RAM </li>
+          <li> <strong>400GB</strong> Bandwidth </li>
+          <li> <strong>10</strong> Email Address </li>
+          <li> <strong>Forum</strong> Support </li>
+          <li class="plan-action"> <a href="#" class="btn btn-danger btn-lg">Signup</a> </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <ul class="plan plan2 featured">
+          <li class="plan-name">Standard </li>
+          <li class="plan-price"> <strong>$39</strong> / month </li>
+          <li> <strong>5GB</strong> Storage </li>
+          <li> <strong>1GB</strong> RAM </li>
+          <li> <strong>400GB</strong> Bandwidth </li>
+          <li> <strong>10</strong> Email Address </li>
+          <li> <strong>Forum</strong> Support </li>
+          <li class="plan-action"> <a href="#" class="btn btn-danger btn-lg">Signup</a> </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <ul class="plan plan3">
+          <li class="plan-name">Advanced </li>
+          <li class="plan-price"> <strong>$199</strong> / month </li>
+          <li> <strong>50GB</strong> Storage </li>
+          <li> <strong>8GB</strong> RAM </li>
+          <li> <strong>1024GB</strong> Bandwidth </li>
+          <li> <strong>Unlimited</strong> Email Address </li>
+          <li> <strong>Forum</strong> Support </li>
+          <li class="plan-action"> <a href="#" class="btn btn-danger btn-lg">Signup</a> </li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <ul class="plan plan4">
+          <li class="plan-name">Mighty </li>
+          <li class="plan-price"> <strong>$999</strong> / month </li>
+          <li> <strong>50GB</strong> Storage </li>
+          <li> <strong>8GB</strong> RAM </li>
+          <li> <strong>1024GB</strong> Bandwidth </li>
+          <li> <strong>Unlimited</strong> Email Address </li>
+          <li> <strong>Forum</strong> Support </li>
+          <li class="plan-action"> <a href="#" class="btn btn-danger btn-lg">Signup</a> </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>-->
+<section id="team" class="page-section">
+  <div class="container">
+    <div class="heading text-center"> 
+      <h2>Búsqueda de Cursos</h2>
+      <p>Ingrese las palabras para la búsqueda de cursos.</p>
       <form action="index2" method="post">
                 {% csrf_token %}
                 <table>
                 {{ form }}
                 </table>
                 <input type="submit" value="Submit" />
-      </form>  
-    </div>    
-  </div> <!-- row -->
-   <div class="alert alert-info text-center" role="alert">
-    Please do work through the Getting Started guide, even if you do know how to build such an application.  The guide covers the basics of working with Heroku, and will familiarize you with all the concepts you need in order to build and deploy your own apps.
+      </form> 
+      <h3><span class="glyphicon glyphicon-info-sign"></span> RESULTADOS COURSERA</h3>
+      
+        {% if listado %}
+           There are {{ listado|length }} records:
+           {% for e in listado %}
+              <h1>Titulo: {{e.Titulo}}</h1>
+              <p>Organizacion: {{e.Organizacion}}</p>
+              <p>Tipo: {{e.Tipo}}</p>
+              <p>Rating: {{e.Rating}}</p>
+              <p>Dificultad: {{e.Dificultad }}</p>
+           {% endfor %}
+        {% else %}
+           No hay cursos
+        {% endif %}   
+        
+       <h3><span class="glyphicon glyphicon-info-sign"></span> RESULTADOS FORMATE.PE</h3>
+      
+        {% if listado2 %}
+           There are {{ listado2|length }} records:
+           {% for e in listado2 %}
+              <h1>Titulo: {{e.Titulo}}</h1>
+              <p>Descripcion: {{e.Descripcion}}</p>
+              <p>Link: {{e.Link}}</p>
+           {% endfor %}
+        {% else %}
+           No hay cursos
+        {% endif %}     
+        
+        <h3><span class="glyphicon glyphicon-info-sign"></span> RESULTADOS CREHANA</h3>
+      
+        {% if listado3 %}
+           There are {{ listado3|length }} records:
+           {% for e in listado3 %}
+              <h1>Titulo: {{e.Titulo}}</h1>
+           {% endfor %}
+        {% else %}
+           No hay cursos
+        {% endif %}         
+    </div>
+    <!-- Team Member's Details -->
+    <!--
+    <div class="team-content">
+      <div class="row">
+        <div class="col-md-3 col-sm-6 col-xs-12"> 
+          <div class="team-member pDark"> 
+            <div class="member-img"> 
+              <img class="img-responsive" src="{% static 'images/photo-1.jpg' %}" alt=""> </div>
+            <div class="team-title">
+			<h4>John Doe</h4>
+            <span class="pos">DEAN</span>
+			</div>
+            <div class="team-socials"> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-github"></i></a> </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12"> 
+          <div class="team-member pDark"> 
+            <div class="member-img"> 
+              <img class="img-responsive" src="{% static 'images/photo-2.jpg' %}" alt=""> </div>
+            <h4>Larry Doe</h4>
+            <span class="pos">Director</span>
+            <div class="team-socials"> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-github"></i></a> </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12"> 
+          <div class="team-member pDark"> 
+            <div class="member-img"> 
+              <img class="img-responsive" src="{% static 'images/photo-3.jpg' %}" alt=""> </div>
+            <h4>Ranith Kays</h4>
+            <span class="pos">HOD</span>
+            <div class="team-socials"> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-github"></i></a> </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12"> 
+          <div class="team-member pDark"> 
+            <div class="member-img"> 
+              <img class="img-responsive" src="{% static 'images/photo-4.jpg' %}" alt=""> </div>
+            <h4>Joan Ray</h4>
+            <span class="pos">Finance</span>
+            <div class="team-socials"> <a href="#"><i class="fa fa-facebook"></i></a> <a href="#"><i class="fa fa-google-plus"></i></a> <a href="#"><i class="fa fa-twitter"></i></a> <a href="#"><i class="fa fa-dribbble"></i></a> <a href="#"><i class="fa fa-github"></i></a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <!--/.container--> 
+</section>
+<section id="contactUs" class="contact-parlex">
+  <div class="parlex-back">
+    <div class="container">
+      <div class="row">
+        <div class="heading text-center"> 
+          <!-- Heading -->
+          <h2>Contact Us</h2>
+          <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered.</p>
+        </div>
+      </div>
+      <div class="row mrgn30">
+       	<!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
+		<form name="sentMessage" id="contactForm"  novalidate>
+		<h3>Contact Form</h3>
+		<div class="control-group">
+		<div class="controls">
+		<input type="text" class="form-control" 
+		placeholder="Full Name" id="name" required
+		data-validation-required-message="Please enter your name" />
+		<p class="help-block"></p>
+		</div>
+		</div> 	
+		<div class="control-group">
+		<div class="controls">
+		<input type="email" class="form-control" placeholder="Email" 
+		id="email" required
+		data-validation-required-message="Please enter your email" />
+		</div>
+		</div> 	
+
+		<div class="control-group">
+		<div class="controls">
+		<textarea rows="10" cols="100" class="form-control" 
+		placeholder="Message" id="message" required
+		data-validation-required-message="Please enter your message" minlength="5" 
+		data-validation-minlength-message="Min 5 characters" 
+		maxlength="999" style="resize:none"></textarea>
+		</div>
+		</div> 		 
+		<div id="success"> </div> <!-- For success/fail messages -->
+		<button type="submit" class="btn btn-primary pull-right">Send</button><br />
+		</form>
+      </div>
+    </div>
+    <!--/.container--> 
   </div>
-</div>
-{% endblock %}
+</section>
+<footer>
+<div class="container">
+        <div class="row">
+            <div class="col-md-3">
+            	<div class="col">
+                   <h4>Contact us</h4>
+                   <ul>
+                        <li>1th Avenue, New York - United States</li>
+                        <li>Phone: +22 342 2345 345 | Fax: +22 724 2342 343 </li>
+                        <li>Email: <a href="mailto:info@example.com" title="Email Us">info@example.com</a></li>
+                        <li>Skype: <a href="skype:my.test?call" title="Skype us">my-company</a></li>
+                    </ul>
+                 </div>
+            </div>
+            
+            <div class="col-md-3">
+            	<div class="col">
+                    <h4>Mailing list</h4>
+                    <p>Lorem ipsum dolor sit amet, ea eum labitur scsstie percipitoleat.</p>
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Your email address...">
+                            <span class="input-group-btn">
+                                <button class="btn" type="button">Go!</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="col-md-3">
+            	<div class="col col-social-icons">
+                    <h4>Follow us</h4>
+                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                    <a href="#"><i class="fa fa-youtube-play"></i></a>
+                    <a href="#"><i class="fa fa-flickr"></i></a>
+                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                    <a href="#"><i class="fa fa-twitter"></i></a>
+                    <a href="#"><i class="fa fa-skype"></i></a>
+                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                </div>
+            </div>
+
+             <div class="col-md-3">
+             	<div class="col">
+                    <h4>Latest News</h4>
+                    <p>
+                    Lorem ipsum dolor labitur scsstie per sit amet, ea eum labitur scsstie percipitoleat.
+                    <br><br>
+                    <a href="#" class="btn">Get Mores!</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+         
+    </div>
+    
+</footer>
+<!--/.page-section-->
+<section class="copyright">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 text-center"> Copyright 2014 | All Rights Reserved - <a href="https://webthemez.com/tag/free" target="_blank">Free Templates</a> by WebThemez.com </div>
+    </div>
+    <!-- / .row --> 
+  </div>
+</section>
+<a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a> 
+
+<!--[if lte IE 8]><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><![endif]--> 
+<script src="{% static 'js/modernizr-latest.js' %}"></script> 
+<script src="{% static 'js/jquery-1.8.2.min.js' %}" type="text/javascript"></script> 
+<script src="{% static 'js/bootstrap.min.js' %}" type="text/javascript"></script> 
+<script src="{% static 'js/jquery.isotope.min.js' %}" type="text/javascript"></script> 
+<script src="{% static 'js/fancybox/jquery.fancybox.pack.js' %}" type="text/javascript"></script> 
+<script src="{% static 'js/jquery.nav.js' %}" type="text/javascript"></script> 
+<script src="{% static 'js/jquery.fittext.js' %}"></script> 
+<script src="{% static 'js/waypoints.js' %}"></script> 
+<script src="{% static 'contact/jqBootstrapValidation.js' %}"></script>
+<script src="{% static 'contact/contact_me.js' %}"></script>
+<script src="{% static 'js/custom.js' %}" type="text/javascript"></script> 
+<script src="{% static 'js/owl-carousel/owl.carousel.js' %}"></script>
+</body>
+</html>

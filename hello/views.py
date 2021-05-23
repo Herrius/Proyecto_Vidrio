@@ -30,6 +30,19 @@ def index2(request):
             listado3 = get_info_crehana(parametro)
     return render(request, "index2.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
 
+def home2(request):
+    # return HttpResponse('Hello from Python!')
+    # If this is a POST request then process the Form data
+    if request.method == 'POST':
+        # Check if the form is valid:
+        form = Valueform(request.POST)
+        if form.is_valid():
+            parametro = form.cleaned_data['busqueda']
+            listado = get_info_coursera(parametro)
+            listado2 = get_info_formate(parametro)
+            listado3 = get_info_crehana(parametro)
+    return render(request, "home2.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
+
 
 def db(request):
 
