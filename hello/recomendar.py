@@ -161,17 +161,17 @@ def get_udemy(filtro):
         chrome_options.add_argument("--no-sandbox")
         chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
-        
         url = "https://www.udemy.com/courses/search/?p="+ str(i)+"&q="+filtro+"&src=ukw"
+        
+        dict={}
+        dict['Titulo'] = url
+        listado_cursos.append(dict)
+                
         driver.get(url)
         sleep(5)
         soup = BeautifulSoup(driver.page_source, "lxml")
         #print(soup)
-        
-        dict={}
-        dict['Titulo'] = soup
-        listado_cursos.append(dict)
-        
+                
         for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
             print(1)
             dict={}
