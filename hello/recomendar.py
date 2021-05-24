@@ -163,10 +163,6 @@ def get_udemy(filtro):
         driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
         url = "https://www.udemy.com/courses/search/?p="+ str(i)+"&q="+filtro+"&src=ukw"
         
-        dict={}
-        dict['Titulo'] = url
-        listado_cursos.append(dict)
-                
         driver.get(url)
         sleep(4)
         soup = BeautifulSoup(driver.page_source, "lxml")
@@ -179,12 +175,15 @@ def get_udemy(filtro):
             organizacion = course.select_one('div.udlite-text-xs.course-card--instructor-list--lIA4f').get_text(strip=True)
             rating = course.select_one('span.udlite-sr-only').get_text(strip=True)
             dificultad = course.select_one('div.udlite-text-xs.course-card--row--1OMjg.course-card--course-meta-info--1hHb3').get_text(strip=True)
+            link = course.select_one('a.udlite-custom-focus-visible browse-course-card--link--3KIkQ').string
+            #['href']
             
             dict['Titulo'] = name
             dict['Organizacion'] = organizacion
             #dict['Precio'] = price
             dict['Rating'] = rating
             dict['Dificultad'] = dificultad
+            dict['Link'] = 'https://www.udemy.com/' + link
             listado_cursos.append(dict)
         driver.close()   
         #print(listado_cursos)
