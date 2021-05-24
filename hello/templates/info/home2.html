@@ -364,7 +364,7 @@
                 </table>
                 <input type="submit" value="Submit" />
       </form> 
-      <h3><span class="glyphicon glyphicon-info-sign"></span> RESULTADOS COURSERA</h3>
+      <h3><span class="glyphicon glyphicon-info-sign"></span> RESULTADOS UDEMY</h3>
       
         {% if listado %}
            There are {{ listado|length }} records:
@@ -384,7 +384,7 @@
         {% if listado2 %}
            There are {{ listado2|length }} records:
            {% for e in listado2 %}
-              <h1>Titulo: {{e.Titulo}}</h1>
+              <h5>Titulo: {{e.Titulo}}</h5>
               <p>Descripcion: {{e.Descripcion}}</p>
               <p>Link: {{e.Link}}</p>
            {% endfor %}
@@ -397,7 +397,7 @@
         {% if listado3 %}
            There are {{ listado3|length }} records:
            {% for e in listado3 %}
-              <h1>Titulo: {{e.Titulo}}</h1>
+              <h5>Titulo: {{e.Titulo}}</h5>
            {% endfor %}
         {% else %}
            No hay cursos

@@ -5,8 +5,9 @@ from bs4 import BeautifulSoup
 import json
 import os
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
-#from time import sleep
+from time import sleep
 
 cant_pag = 5
 
@@ -143,25 +144,30 @@ def get_info_crehana(filtro):
 '''========================================================================='''
 #https://romik-kelesh.medium.com/how-to-deploy-a-python-web-scraper-with-selenium-on-heroku-1459cb3ac76c
 
-def get_udemy(filtro):    
-    for i in range(1,cant_pag):
+def get_udemy(filtro):  
+    listado_cursos = []
+        
+    for i in range(1,2):
         #https://www.udemy.com/courses/search/?p=2&q=machine+learning&src=ukw
-        driver = webdriver.Chrome(executable_path='D:\maria\instaladores\chromedriver_win32\chromedriver.exe')
+        #driver = webdriver.Chrome(executable_path='D:\maria\instaladores\chromedriver_win32\chromedriver.exe')
                 
-        #chrome_options = webdriver.ChromeOptions()
-        #chrome_options.add_argument("--headless")
-        #chrome_options.add_argument("--disable-dev-shm-usage")
-        #chrome_options.add_argument("--no-sandbox")        
-        #chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-        #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=chrome_options)
+        #USAR ESTE LINK PARA DESARROLLO
+        #driver = webdriver.Chrome(ChromeDriverManager().install())
+        
+        #USAR ESTE CODIGO PARA HEROKU
+        chrome_options = webdriver.ChromeOptions()
+        chrome_options.add_argument("--headless")
+        chrome_options.add_argument("--disable-dev-shm-usage")
+        chrome_options.add_argument("--no-sandbox")
+        chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+        driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
         
         url = "https://www.udemy.com/courses/search/?p="+ str(i)+"&q="+filtro+"&src=ukw"
-        #print(url)
-        listado_cursos = []
         driver.get(url)
-        #sleep(5)
+        sleep(5)
         soup = BeautifulSoup(driver.page_source, "lxml")
-
+        #print(soup)
+        
         for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
             dict={}
             name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--2f7tE').get_text(strip=True)
@@ -177,6 +183,7 @@ def get_udemy(filtro):
             dict['Dificultad'] = dificultad
             listado_cursos.append(dict)
         driver.close()   
+        #print(listado_cursos)
     return listado_cursos
       
 #get_udemy('marketing')    

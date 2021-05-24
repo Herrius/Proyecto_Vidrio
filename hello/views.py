@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .forms import Valueform
 from .models import Greeting
 from .recomendar import get_info_coursera
+from .recomendar import get_udemy
 from .recomendar import get_info_formate
 from .recomendar import get_info_crehana
 
@@ -25,7 +26,8 @@ def index2(request):
         form = Valueform(request.POST)
         if form.is_valid():
             parametro = form.cleaned_data['busqueda']
-            listado = get_info_coursera(parametro)
+            #listado = get_info_coursera(parametro)
+            listado = get_udemy(parametro)
             listado2 = get_info_formate(parametro)
             listado3 = get_info_crehana(parametro)
     return render(request, "index2.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
