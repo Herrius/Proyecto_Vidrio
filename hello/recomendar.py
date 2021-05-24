@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 
 from time import sleep
 
