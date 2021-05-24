@@ -9,7 +9,7 @@ from selenium import webdriver
 
 from time import sleep
 
-cant_pag = 5
+cant_pag = 3
 
 '''========================================================================='''
 '''Obtención en Coursera'''
@@ -168,12 +168,11 @@ def get_udemy(filtro):
         listado_cursos.append(dict)
                 
         driver.get(url)
-        sleep(5)
+        sleep(4)
         soup = BeautifulSoup(driver.page_source, "lxml")
         #print(soup)
                 
         for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
-            print(1)
             dict={}
             name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--2f7tE').get_text(strip=True)
             #price = course.select_one('div.price-text--price-part--Tu6MH.course-card--discount-price--3TaBk.udlite-heading-md span > span').get_text(strip=True).replace('\xa0€','')
