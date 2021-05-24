@@ -175,7 +175,8 @@ def get_udemy(filtro):
             organizacion = course.select_one('div.udlite-text-xs.course-card--instructor-list--lIA4f').get_text(strip=True)
             rating = course.select_one('span.udlite-sr-only').get_text(strip=True)
             dificultad = course.select_one('div.udlite-text-xs.course-card--row--1OMjg.course-card--course-meta-info--1hHb3').get_text(strip=True)
-            link = course.select_one('a.udlite-custom-focus-visible browse-course-card--link--3KIkQ')['href']
+            link = course.select_one('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
+            #link = course.find('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
             
             dict['Titulo'] = name
             dict['Organizacion'] = organizacion
