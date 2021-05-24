@@ -168,6 +168,10 @@ def get_udemy(filtro):
         soup = BeautifulSoup(driver.page_source, "lxml")
         #print(soup)
         
+        dict={}
+        dict['Titulo'] = soup
+        listado_cursos.append(dict)
+        
         for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
             print(1)
             dict={}
