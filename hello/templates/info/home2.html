@@ -369,7 +369,7 @@
         {% if listado %}
            There are {{ listado|length }} records:
            {% for e in listado %}
-              <h1>Titulo: {{e.Titulo}}</h1>
+              <h4>Titulo: {{e.Titulo}}</h4>
               <p>Organizacion: {{e.Organizacion}}</p>
               <p>Rating: {{e.Rating}}</p>
               <p>Dificultad: {{e.Dificultad }}</p>
@@ -383,7 +383,7 @@
         {% if listado2 %}
            There are {{ listado2|length }} records:
            {% for e in listado2 %}
-              <h5>Titulo: {{e.Titulo}}</h5>
+              <h4>Titulo: {{e.Titulo}}</h4>
               <p>Descripcion: {{e.Descripcion}}</p>
               <p>Link: {{e.Link}}</p>
            {% endfor %}

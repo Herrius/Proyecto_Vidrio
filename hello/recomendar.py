@@ -147,7 +147,7 @@ def get_info_crehana(filtro):
 def get_udemy(filtro):  
     listado_cursos = []
         
-    for i in range(1,2):
+    for i in range(1,cant_pag):
         #https://www.udemy.com/courses/search/?p=2&q=machine+learning&src=ukw
         #driver = webdriver.Chrome(executable_path='D:\maria\instaladores\chromedriver_win32\chromedriver.exe')
                 
@@ -169,6 +169,7 @@ def get_udemy(filtro):
         #print(soup)
         
         for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
+            print(1)
             dict={}
             name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--2f7tE').get_text(strip=True)
             #price = course.select_one('div.price-text--price-part--Tu6MH.course-card--discount-price--3TaBk.udlite-heading-md span > span').get_text(strip=True).replace('\xa0€','')
