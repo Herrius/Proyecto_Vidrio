@@ -86,7 +86,7 @@ def get_info_formate(filtro):
 '''Obtención en Crehana'''
 '''========================================================================='''
 
-def get_info_crehana(filtro):
+def get_info_crehana_old(filtro):
     url = "https://www.crehana.com/pe/cursos-online/search/?q="+filtro
     page = requests.get(url)
     #soup_page = BeautifulSoup(page.content, 'html.parser')
@@ -121,12 +121,6 @@ def get_info_crehana(filtro):
         #if i>=105 and i<145:
         #    print(tag.extract())
 
-    #for curso in soup_page.findAll('script'):
-     #   print(curso.string)
-    
-    #for curso in soup_page.findAll('div'):
-      #  print(curso.get_text())
-    
     #for curso in soup_page.findAll("div", { "class" : "sc-1dd6qyt-0 hoLLHg p-4 sm:p-8 md:p-12" }):
     for curso in soup_page.findAll("div", { "class" : "sc-1dd6qyt-0 hoLLHg p-4 sm:p-8 md:p-12" }):
         print(curso)
@@ -135,7 +129,33 @@ def get_info_crehana(filtro):
         listado_cursos.append(dict)
         print(dict)
     return listado_cursos
-    
+
+
+def get_info_crehana(filtro):
+    #https://www.crehana.com/pe/cursos-online/search/?q=marketing
+    url = "https://www.crehana.com/pe/cursos-online/search/?q="+filtro
+    listado_cursos = []
+    #USAR ESTE LINK PARA DESARROLLO
+    #driver = webdriver.Chrome(ChromeDriverManager().install())
+        
+    #USAR ESTE CODIGO PARA HEROKU
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
+        
+    driver.get(url)
+    sleep(4)
+    soup = BeautifulSoup(driver.page_source, "lxml")
+
+    for course in soup.select('div.sc-1tv810m-0.AHDcA.flex.sm:px-16.py-16.sm:py-24.border-b.border-solid.border-gray-light.w-full.cursor-pointer.undefined > div.flex.flex-col.items-start.justify-center.w-full.pl-12.sm:pl-16'):
+        dict={}
+        dict['Titulo'] = course.select_one('a > h4.font-subtitle2.text-base-main.mb-12.w-full.hidden.sm:flex.cursor-pointer > div').get_text(strip=True)
+        listado_cursos.append(dict)
+    return listado_cursos
+   
 #get_info_crehana('marketing')
     
         
@@ -183,7 +203,7 @@ def get_udemy(filtro):
             #dict['Precio'] = price
             dict['Rating'] = rating
             dict['Dificultad'] = dificultad
-            dict['Link'] = 'https://www.udemy.com/' + link
+            dict['Link'] = 'https://www.udemy.com' + link
             listado_cursos.append(dict)
         driver.close()   
         #print(listado_cursos)

@@ -6,6 +6,7 @@ from .recomendar import get_info_coursera
 from .recomendar import get_udemy
 from .recomendar import get_info_formate
 from .recomendar import get_info_crehana
+from .dboperations import insert_db
 
 # Create your views here.
 def index(request):
@@ -44,9 +45,14 @@ def home2(request):
             listado = get_udemy(parametro)
             listado2 = get_info_formate(parametro)
             listado3 = get_info_crehana(parametro)
+            #save_db(listado,listado2,listado3,parametro,)
     return render(request, "info/home2.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
 
 
+def save_db(list1,list2,list3):
+    print('prueba')
+    insert_db(list1,list2,list3)
+    
 def db(request):
 
     greeting = Greeting()
