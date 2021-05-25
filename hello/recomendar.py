@@ -9,7 +9,7 @@ from selenium import webdriver
 
 from time import sleep
 
-cant_pag = 3
+cant_pag = 2
 
 '''========================================================================='''
 '''Obtención en Coursera'''
@@ -150,9 +150,9 @@ def get_info_crehana(filtro):
     sleep(2)
     soup = BeautifulSoup(driver.page_source, "lxml")
 
-    for course in soup.select('div.sc-1tv810m-0.AHDcA.flex.sm:px-16.py-16.sm:py-24.border-b.border-solid.border-gray-light.w-full.cursor-pointer.undefined > div.flex.flex-col.items-start.justify-center.w-full.pl-12.sm:pl-16'):
+    for course in soup.select('div.sc-1tv810m-0.AHDcA.flex.sm.px-16.py-16.sm.py-24.border-b.border-solid.border-gray-light.w-full.cursor-pointer.undefined > div.flex.flex-col.items-start.justify-center.w-full.pl-12.sm.pl-16'):
         dict={}
-        dict['Titulo'] = course.select_one('a > h4.font-subtitle2.text-base-main.mb-12.w-full.hidden.sm:flex.cursor-pointer > div').get_text(strip=True)
+        dict['Titulo'] = course.select_one('a > h4.font-subtitle2.text-base-main.mb-12.w-full.hidden.sm.flex.cursor-pointer > div').get_text(strip=True)
         listado_cursos.append(dict)
     return listado_cursos
    
