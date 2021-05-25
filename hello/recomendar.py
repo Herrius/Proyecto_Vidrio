@@ -147,7 +147,7 @@ def get_info_crehana(filtro):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
         
     driver.get(url)
-    sleep(4)
+    sleep(3)
     soup = BeautifulSoup(driver.page_source, "lxml")
 
     for course in soup.select('div.sc-1tv810m-0.AHDcA.flex.sm:px-16.py-16.sm:py-24.border-b.border-solid.border-gray-light.w-full.cursor-pointer.undefined > div.flex.flex-col.items-start.justify-center.w-full.pl-12.sm:pl-16'):
