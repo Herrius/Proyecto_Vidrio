@@ -45,7 +45,7 @@ def home2(request):
             listado = get_udemy(parametro)
             listado2 = get_info_formate(parametro)
             listado3 = get_info_crehana(parametro)
-            #save_db(listado,listado2,listado3,parametro,)
+            insert_db(listado,listado2,listado3,parametro)
     return render(request, "info/home2.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
 
 
