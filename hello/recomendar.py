@@ -86,50 +86,6 @@ def get_info_formate(filtro):
 '''Obtención en Crehana'''
 '''========================================================================='''
 
-def get_info_crehana_old(filtro):
-    url = "https://www.crehana.com/pe/cursos-online/search/?q="+filtro
-    page = requests.get(url)
-    #soup_page = BeautifulSoup(page.content, 'html.parser')
-    #soup_page = BeautifulSoup(page.content, 'html5lib')
-    soup_page = BeautifulSoup(page.content, 'lxml')
-    #print(soup_page.text)
-    #print(soup_page.select_one('.field-label:contains("Price:") + div .field-item').text)
-    #print(soup_page.select_one('.html:contains("marketing")').text)
-    listado_cursos = []
-    #prueba = soup_page.xpath('//a[contains(@href, "image")]')
-    #print(prueba)#script_text = soup_page.find(' ')
-    #print(script_text)
-    i=0
-    for tag in soup_page.find('html').find_all():
-        i=i+1
-        texto = tag.get_text()
-        result = texto.find(filtro)
-        #print(i,result)
-        if (result != -1 and i>=60 and i<68):
-            relevant = texto[texto.index('{'):] #removes = and the part before it
-            relevant = relevant[:relevant.index('window.__PAGE_DATA__')-19] #removes = and the part before it
-            #print(relevant)
-            data = json.loads(relevant) #a dictionary!
-            #print(data.keys())
-            for keys in data:
-                texto2 = data[keys]
-                #.get_text().find(filtro)
-                print('validar', texto2)
-                #busqueda = texto2.find(filtro)
-                #if (busqueda != -1):
-                #    print('validar', texto2)
-        #if i>=105 and i<145:
-        #    print(tag.extract())
-
-    #for curso in soup_page.findAll("div", { "class" : "sc-1dd6qyt-0 hoLLHg p-4 sm:p-8 md:p-12" }):
-    for curso in soup_page.findAll("div", { "class" : "sc-1dd6qyt-0 hoLLHg p-4 sm:p-8 md:p-12" }):
-        print(curso)
-        dict={}
-        dict['Titulo'] = curso.find('div').get_text()
-        listado_cursos.append(dict)
-        print(dict)
-    return listado_cursos
-
 
 def get_info_crehana(filtro):
     #https://www.crehana.com/pe/cursos-online/search/?q=marketing

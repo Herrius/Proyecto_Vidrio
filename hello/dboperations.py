@@ -32,15 +32,15 @@ def insert_db(list1,list2,list3,filtro):
         
         for list_detail in list1:
             platform = 'Udemy'
-            cursor.execute(sql_string, (list_detail['Titulo'], list_detail['Link'], platform, list_detail['Rating'],list_detail['Dificultad'],list_detail['Descripcion'],list_detail['Organizacion'],id_of_new_row))
+            cursor.execute(sql_string, (list_detail['Titulo'], list_detail['Link'], platform, list_detail['Rating'],list_detail['Dificultad'],' ',list_detail['Organizacion'],id_of_new_row))
         
         for list_detail in list2:
             platform = 'Formate'
-            cursor.execute(sql_string, (list_detail['Titulo'], list_detail['Link'], platform, list_detail['Rating'],list_detail['Dificultad'],list_detail['Descripcion'],list_detail['Organizacion'],id_of_new_row))
+            cursor.execute(sql_string, (list_detail['Titulo'], list_detail['Link'], platform, ' ', ' ',list_detail['Descripcion'],' ',id_of_new_row))
         
         for list_detail in list3:
             platform = 'Crehana'
-            cursor.execute(sql_string, (list_detail['Titulo'], list_detail['Link'], platform, list_detail['Rating'],list_detail['Dificultad'],list_detail['Descripcion'],list_detail['Organizacion'],id_of_new_row))
+            cursor.execute(sql_string, (list_detail['Titulo'], list_detail['Link'], platform, ' ',' ',list_detail['Descripcion'],' ',id_of_new_row))
         
         conn.commit()
         
