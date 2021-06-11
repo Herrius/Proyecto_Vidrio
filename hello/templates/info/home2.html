@@ -397,7 +397,9 @@
         {% if listado3 %}
            There are {{ listado3|length }} records:
            {% for e in listado3 %}
-              <h5>Titulo: {{e.Titulo}}</h5>
+              <h4>Titulo: {{e.Titulo}}</h4>
+              <p>Descripcion: {{e.Descripcion}}</p>
+              <p>Link: {{e.Link}}</p>
            {% endfor %}
         {% else %}
            No hay cursos

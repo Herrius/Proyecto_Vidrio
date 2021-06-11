@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import json
 import os
 from selenium import webdriver
-#from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager #comentar para producción
 
 from time import sleep
 
@@ -147,15 +147,28 @@ def get_info_crehana(filtro):
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
         
     driver.get(url)
-    sleep(2)
+    sleep(3)
     soup = BeautifulSoup(driver.page_source, "lxml")
-
-    for course in soup.select('div.sc-1tv810m-0.AHDcA.flex.sm.px-16.py-16.sm.py-24.border-b.border-solid.border-gray-light.w-full.cursor-pointer.undefined > div.flex.flex-col.items-start.justify-center.w-full.pl-12.sm.pl-16'):
-        dict={}
-        dict['Titulo'] = course.select_one('a > h4.font-subtitle2.text-base-main.mb-12.w-full.hidden.sm.flex.cursor-pointer > div').get_text(strip=True)
-        listado_cursos.append(dict)
+    i=0
+    for course in soup.select('div.cui-container.sc-1b54zz7-0.bzFxEp.flex.flex-col'):
+        if (i==1):
+            for detail in course.select('div.sc-1dd6qyt-0.fcdRdt.p-12'):
+                dict={}
+                titulo = detail.select_one('p.wze59-0.FVJYX.font-subtitle4')
+                if (titulo is not None):
+                    dict['Titulo'] = titulo.get_text(strip=True)
+                    Descripcion = detail.select_one('p.wze59-0.FVJYZ.font-body4.mt-4')
+                    dict['Descripcion'] = Descripcion.get_text() 
+                    link = 'https://www.crehana.com' + detail.find('a')['href']
+                    final = link.find('?')
+                    dict['Link'] = link[0:final]
+                    listado_cursos.append(dict)
+                    #print(dict)
+                
+        i=i+1
     return listado_cursos
-   
+    driver.close()
+    
 #get_info_crehana('marketing')
     
         
