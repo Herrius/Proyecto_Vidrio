@@ -17,7 +17,7 @@ def connect_db():
     return conn
 
 def insert_db(list1,list2,list3,filtro):
-    usuario = 'user1'
+    usuario = 5
     try:
         conn = connect_db()
         cursor = conn.cursor()
