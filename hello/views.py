@@ -6,6 +6,7 @@ from .recomendar import get_info_coursera
 from .recomendar import get_udemy
 from .recomendar import get_info_formate
 from .recomendar import get_info_crehana
+from .chatbot2 import response
 from .dboperations import insert_db
 
 # Create your views here.
@@ -20,7 +21,15 @@ def home(request):
     return render(request, "info/home.html", {'form': form})
 
 def chatbot(request):
-    return render(request, "Chatbot.html")
+    g.respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
+    return render(request, "Chatbot.html", respon=g.respon)
+
+def chatbotRespuesta(request):
+    if request.method == 'POST':
+        g.respon = response(request.form['question'])
+    else:
+        g.respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
+    return render(request, "Chatbot.html", respon=g.respon)
 
 def index2(request):
     # return HttpResponse('Hello from Python!')

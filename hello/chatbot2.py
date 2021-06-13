@@ -47,26 +47,26 @@ def inicio():
     
 #inicio() 
             
-respon = ' '
-
-@app.before_request
-def before_request():
-	g.respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
-
-@app.route("/chatbot")
-def home():
-    return render_template("Chatbot.html")
-
-@app.route('/chatbot2',methods=['GET','POST'])
-def index():
-	if request.method == 'POST':
-		reply = response(request.form['question'])
-		return render_template('index.html',respon=reply)
-	return render_template('index.html',respon=g.respon)
-	
-#running the app
-if __name__ == "__main__":
-	app.run(debug=True)
+#respon = ' '
+#
+#@app.before_request
+#def before_request():
+#	g.respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
+#
+#@app.route("/chatbot")
+#def home():
+#    return render_template("Chatbot.html")
+#
+#@app.route('/chatbot2',methods=['GET','POST'])
+#def index():
+#	if request.method == 'POST':
+#		reply = response(request.form['question'])
+#		return render_template('index.html',respon=reply)
+#	return render_template('index.html',respon=g.respon)
+#	
+##running the app
+#if __name__ == "__main__":
+#	app.run(debug=True)
             
             
             
