@@ -9,7 +9,7 @@ from os import listdir
 from flask import Flask, url_for
 from flask import g, session, request, render_template
 
-mybot_path="hello/templates/aimls"
+mybot_path="/hello/templates/aimls"
 #Switch to the working directory where the corpus is located
 #os.chdir(mybot_path)
 #files = listdir('./templates/aimls/')
