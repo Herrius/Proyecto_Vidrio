@@ -15,8 +15,9 @@ mybot_path="./templates/aimls"
 #files = listdir('./templates/aimls/')
 #files = listdir('./')
 
+abs_path = os.path.abspath("./templates/aimls")
 UPLOAD_DIRECTORY = "/python-getting-started/hello/templates/aimls/"
-files = listdir(UPLOAD_DIRECTORY)
+files = listdir(abs_path)
 
 #APP
 #app = Flask(__name__)
