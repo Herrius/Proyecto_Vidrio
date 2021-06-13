@@ -15,7 +15,7 @@ mybot_path="./templates/aimls"
 #files = listdir('./templates/aimls/')
 #files = listdir('./')
 
-UPLOAD_DIRECTORY = "./templates/aimls/"
+UPLOAD_DIRECTORY = "/python-getting-started/hello/templates/aimls/"
 files = listdir(UPLOAD_DIRECTORY)
 
 #APP
