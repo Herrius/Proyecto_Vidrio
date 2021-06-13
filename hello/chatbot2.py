@@ -15,10 +15,18 @@ from flask import g, session, request, render_template
 #files = listdir('./templates/aimls/')
 #files = listdir('./')
 
-abs_path = os.path.abspath("/hello/templates/aimls")
 UPLOAD_DIRECTORY = "/python-getting-started/hello/templates/aimls/"
+
+
+files2 = os.listdir('.')
+for file in files2:
+    print(file)
+    
+abs_path = os.path.abspath("/python-getting-started/hello/templates/aimls")
+print(abs_path)
 files = listdir(abs_path)
 
+  
 #APP
 #app = Flask(__name__)
 #app.config.from_object(__name__)
