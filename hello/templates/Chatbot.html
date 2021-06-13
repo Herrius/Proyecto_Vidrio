@@ -3,7 +3,6 @@
 <html>
 <head>
 
-
 <title> EduChatbot </title> 
 <link rel="stylesheet" href="{% static 'css/styles.css' %}"  />
 
@@ -11,7 +10,8 @@
 <body>
 <div id="content">
 <div id="answer">
-<img src="{{ url_for('static', filename='hatter.png') }}" height="150px" width="180px"><br/>
+<img src="{% static 'images/hatter.png' %}" alt="" height="150px" width="180px"><br/>
+
 {% if respon %}
 	{{ respon }}
 {% else %}
@@ -19,7 +19,6 @@
 {% endif %}
 </div>
 <div id="question">
-
 	<form method="post" action="chatbotRespuesta">
 		<input type="text" size="55" name="question">	
 	<submit value="Answer">
