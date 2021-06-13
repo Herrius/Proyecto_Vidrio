@@ -27,8 +27,8 @@ def chatbot(request):
 def chatbotRespuesta(request):
     if request.method == 'POST':
         #respon = response(request.form['question'])
-        print('PRUEBA'+request.POST)
-        print(request.POST['question'])
+        #print('PRUEBA'+request.POST)
+        print('PRUEBA'+request.POST['question'])
         respon = response(request.form['question'])
     else:
         respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
