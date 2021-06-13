@@ -15,7 +15,7 @@ from os import listdir
 #UPLOAD_DIRECTORY = "/python-getting-started/hello/templates/aimls/"
 
 path = os.path.dirname(os.path.realpath(__file__))
-a#bs_path = os.path.abspath("templates/aimls") #desarrollo
+#abs_path = os.path.abspath("templates/aimls") #desarrollo
 abs_path = os.path.abspath("hello/templates/aimls") #produccion
 files = listdir(abs_path)
 mybot=Kernel()
