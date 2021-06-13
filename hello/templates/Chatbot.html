@@ -20,6 +20,7 @@
 </div>
 <div id="question">
 	<form method="post" action="chatbotRespuesta">
+    	{% csrf_token %}                
 		<input type="text" size="55" name="question">	
 	<submit value="Answer">
 </div></div>
