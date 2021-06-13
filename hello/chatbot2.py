@@ -20,9 +20,9 @@ UPLOAD_DIRECTORY = "/python-getting-started/hello/templates/aimls/"
 
 files2 = os.listdir('.')
 for file in files2:
-    print(file)
+    print('Directorio:'+file)
     
-abs_path = os.path.abspath("/python-getting-started/hello/templates/aimls")
+abs_path = os.path.abspath("hello/templates/aimls")
 print(abs_path)
 files = listdir(abs_path)
 
