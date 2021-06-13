@@ -7,3 +7,5 @@ selenium
 newspaper3k
 psycopg2-binary
 dj-database-url
+aiml
+Flask

@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+
+
+<title> EduChatbot </title> 
+<link rel="stylesheet" type="text/css" href={{url_for('static',filename='style.css') }}>
+
+</head>
+<body>
+<div id="content">
+<div id="answer">
+<img src="{{ url_for('static', filename='hatter.png') }}" height="150px" width="180px"><br/>
+{% if respon %}
+	{{ respon }}
+{% else %}
+	Hola, soy EduChatbot, pregúntame lo que necesites saber.  
+{% endif %}
+</div>
+<div id="question">
+
+	<form method="post" action="{{ url_for('chatbot') }}">
+		<input type="text" size="55" name="question">	
+	<submit value="Answer">
+</div></div>
+
+</body>
+</html>

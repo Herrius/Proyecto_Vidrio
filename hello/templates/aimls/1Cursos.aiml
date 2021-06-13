@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: 0prueba.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: julio 19, 2020 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2020 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+
+	<category><pattern>como puedo hacer una videollamada</pattern>
+		<template>Para hacer videollamdas necesitas internet y un dispositivo como laptop, pc, movil, etc. </template>
+	</category>
+	<category><pattern>Como puedo acceder a un curso</pattern>
+		<template>Puedes acceder buscando el curso que necesites.</template>
+	</category>	
+	<category><pattern>como puedo compartir archivos</pattern>
+		<template>Puedes compartir a través de muchos aplicativos como google drive, whatsapp, etc.</template>
+	</category>
+	<category><pattern>Como puedo grabar un video</pattern>
+		<template>Existen muchas formas de grabar videos, te recomiendo lo siguiente: .</template>
+	</category>
+	<category><pattern>Como puedo compartir un video</pattern>
+		<template>Hay muchas plataformas donde puedes compartir videos, como google drive, etc. Si es muy pesado te recomiendo colgarlo en youtube</template>
+	</category>
+	<category><pattern>Como puedo comunicarme con mis alumnos</pattern>
+		<template>Puedes utilizar whatsapp, messenger, o alguna otra herramienta</template>
+	</category>
+	<category><pattern>Como puedo crear un curso y en donde</pattern>
+		<template>Hay plataformas como udemy, etc..</template>
+	</category>
+	<category><pattern>puedo crear un curso sin internet</pattern>
+		<template>Puedes crearlo sin internet pero necesitas internet para compartirlo con tus alumnos.</template>
+	</category>
+	<category><pattern>^ curso ^</pattern>
+		<template>En esta plataforma puedes encontrar muchos cursos</template>
+	</category>
+	<category>
+		<pattern>Quisiera aprender a usar <set>name</set></pattern>
+		<template>Para usar <star/> te recomiendo buscar el curso correspondiente en nuestra plataforma</template>
+	</category>
+	<category>
+		<pattern>te gusta (realmente) ese curso</pattern>
+		<template>Sí, quiero llevarlo.</template>
+	</category>
+	<category>
+		<pattern>este correo es correcto /.+\@.+\..+</pattern>
+		<template>Si, es un correo válido</template>
+	</category>	
+	<category>
+		<pattern>* como funciona * whatsapp</pattern>
+		<template>Whatsapp es un aplicativo que permite mensajes instantáneos a través de internet.</template>
+	</category>
+	<category>
+		<pattern>* como funciona * google drive</pattern>
+		<template>Es un repositorio donde se pueden compartir archivos.</template>
+	</category>
+
+</aiml>
