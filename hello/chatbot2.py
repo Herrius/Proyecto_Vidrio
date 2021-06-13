@@ -11,13 +11,16 @@ from flask import g, session, request, render_template
 
 mybot_path="./templates/aimls"
 #Switch to the working directory where the corpus is located
-os.chdir(mybot_path)
+#os.chdir(mybot_path)
 #files = listdir('./templates/aimls/')
-files = listdir('./')
+#files = listdir('./')
+
+UPLOAD_DIRECTORY = "./templates/aimls/"
+files = listdir(UPLOAD_DIRECTORY)
 
 #APP
-app = Flask(__name__)
-app.config.from_object(__name__)
+#app = Flask(__name__)
+#app.config.from_object(__name__)
 
 def response(user_response):   
     robo_response=''  
