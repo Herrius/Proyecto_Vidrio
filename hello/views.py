@@ -19,6 +19,9 @@ def home(request):
     form = Valueform(initial={'busqueda': '',})
     return render(request, "info/home.html", {'form': form})
 
+def chatbot(request):
+    return render(request, "Chatbot.html")
+
 def index2(request):
     # return HttpResponse('Hello from Python!')
     # If this is a POST request then process the Form data
