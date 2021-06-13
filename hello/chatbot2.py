@@ -6,8 +6,8 @@
 import os
 from aiml import Kernel
 from os import listdir
-from flask import Flask, url_for
-from flask import g, session, request, render_template
+#from flask import Flask, url_for
+#from flask import g, session, request, render_template
 
 #mybot_path="/hello/templates/aimls"
 #Switch to the working directory where the corpus is located
@@ -22,7 +22,6 @@ from flask import g, session, request, render_template
 #    print('Directorio:'+file)
     
 abs_path = os.path.abspath("hello/templates/aimls")
-print(abs_path)
 files = listdir(abs_path)
   
 #APP
@@ -36,6 +35,7 @@ def response(user_response):
     for file in files:
         mybot.learn(file)
     robo_response = mybot.respond(user_response)
+    print('RESPUESTA'+robo_response)
     return robo_response
 
 def inicio():   
