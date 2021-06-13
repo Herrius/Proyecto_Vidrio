@@ -9,13 +9,13 @@ from os import listdir
 from flask import Flask, url_for
 from flask import g, session, request, render_template
 
-mybot_path="/hello/templates/aimls"
+#mybot_path="/hello/templates/aimls"
 #Switch to the working directory where the corpus is located
 #os.chdir(mybot_path)
 #files = listdir('./templates/aimls/')
 #files = listdir('./')
 
-abs_path = os.path.abspath("./templates/aimls")
+abs_path = os.path.abspath("/hello/templates/aimls")
 UPLOAD_DIRECTORY = "/python-getting-started/hello/templates/aimls/"
 files = listdir(abs_path)
 
