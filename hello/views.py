@@ -22,14 +22,14 @@ def home(request):
 
 def chatbot(request):
     respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
-    return render(request, "Chatbot.html", respon=respon)
+    return render(request, "Chatbot.html", {'respon':respon})
 
 def chatbotRespuesta(request):
     if request.method == 'POST':
         respon = response(request.form['question'])
     else:
         respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
-    return render(request, "Chatbot.html", respon=respon)
+    return render(request, "Chatbot.html", {'respon':respon})
 
 def index2(request):
     # return HttpResponse('Hello from Python!')
