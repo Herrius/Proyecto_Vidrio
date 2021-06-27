@@ -3,6 +3,8 @@
 #https://github.com/gautamkrishnar/hatter/blob/master/main.py
 #https://github.com/pemagrg1/Easy-Chatbot/blob/master/bot.py
 #https://studygyaan.com/python/create-web-based-chatbot-in-python-django-flask
+#https://pemagrg.medium.com/aiml-tutorial-a8802830f2bf
+#https://www.pandorabots.com/docs/aiml-fundamentals/
 #https://towardsdatascience.com/how-to-create-a-chatbot-with-python-deep-learning-in-less-than-an-hour-56a063bdfc44
 
 import os

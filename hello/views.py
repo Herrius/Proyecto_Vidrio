@@ -7,7 +7,7 @@ from .recomendar import get_udemy
 from .recomendar import get_info_formate
 from .recomendar import get_info_crehana
 from .chatbot2 import response
-from .chatbot2 import responseDeepLearning
+from .chatbot import responseNLTK
 from .dboperations import insert_db
 
 # Create your views here.
@@ -34,7 +34,7 @@ def chatbotRespuesta(request):
 #    else:
 #        respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
 #    return render(request, "Chatbot.html", {'respon':respon})
-    respon = responseDeepLearning(request.GET['msg'])
+    respon = responseNLTK(request.GET['msg'])
     return HttpResponse(respon)
 
 def chatbot2(request):
