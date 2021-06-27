@@ -4,6 +4,7 @@
 import nltk  
 import random  
 import string
+import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -28,7 +29,9 @@ def LemNormalize(text):
     return LemTokens(nltk.word_tokenize(text.lower().translate(remove_punct_dict)))
     
 def procesar_corpus():
-    f=open('chatbot.txt','r',errors = 'ignore')
+    #f=open('chatbot.txt','r',errors = 'ignore') #desarrollo
+    path = os.path.dirname(os.path.realpath(__file__)) #produccion
+    f=open(path +'/chatbot.txt','r',errors = 'ignore')  #produccion
     raw=f.read()
     raw=raw.lower()# converts to lowercase
     return raw   
