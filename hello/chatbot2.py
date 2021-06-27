@@ -2,6 +2,7 @@
 #https://www.tutorialfor.com/blog-251181.htm
 #https://github.com/gautamkrishnar/hatter/blob/master/main.py
 #https://github.com/pemagrg1/Easy-Chatbot/blob/master/bot.py
+#https://studygyaan.com/python/create-web-based-chatbot-in-python-django-flask
 
 import os
 from aiml import Kernel
@@ -23,6 +24,8 @@ mybot=Kernel()
 for file in files:
     mybot.learn(path + '/templates/aimls/' + file)
 
+
+#CHATBOT basado en aimls
 def response(user_response):   
     robo_response=''  
     robo_response = mybot.respond(user_response)
@@ -47,28 +50,4 @@ def inicio():
             print("ROBO: Adiós!")
     
 #inicio() 
-            
-#respon = ' '
-#
-#@app.before_request
-#def before_request():
-#	g.respon = "EDUCHATBOT: Hola, mi nombre es Robo. Contestaré todas tus preguntas, para terminar escribe Bye!"
-#
-#@app.route("/chatbot")
-#def home():
-#    return render_template("Chatbot.html")
-#
-#@app.route('/chatbot2',methods=['GET','POST'])
-#def index():
-#	if request.method == 'POST':
-#		reply = response(request.form['question'])
-#		return render_template('index.html',respon=reply)
-#	return render_template('index.html',respon=g.respon)
-#	
-##running the app
-#if __name__ == "__main__":
-#	app.run(debug=True)
-            
-            
-            
             
