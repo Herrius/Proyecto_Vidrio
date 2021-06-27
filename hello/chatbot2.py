@@ -3,6 +3,7 @@
 #https://github.com/gautamkrishnar/hatter/blob/master/main.py
 #https://github.com/pemagrg1/Easy-Chatbot/blob/master/bot.py
 #https://studygyaan.com/python/create-web-based-chatbot-in-python-django-flask
+#https://towardsdatascience.com/how-to-create-a-chatbot-with-python-deep-learning-in-less-than-an-hour-56a063bdfc44
 
 import os
 from aiml import Kernel
@@ -27,6 +28,12 @@ for file in files:
 
 #CHATBOT basado en aimls
 def response(user_response):   
+    robo_response=''  
+    robo_response = mybot.respond(user_response)
+    print('RESPUESTA'+robo_response)
+    return robo_response
+
+def responseDeepLearning(user_response):   
     robo_response=''  
     robo_response = mybot.respond(user_response)
     print('RESPUESTA'+robo_response)
