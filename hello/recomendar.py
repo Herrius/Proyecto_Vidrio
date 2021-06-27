@@ -135,7 +135,8 @@ def get_info_crehana(filtro):
 
 def get_udemy(filtro):  
     listado_cursos = []
-        
+    rating = ''
+    
     for i in range(1,cant_pag):
         #https://www.udemy.com/courses/search/?p=2&q=machine+learning&src=ukw
         #driver = webdriver.Chrome(executable_path='D:\maria\instaladores\chromedriver_win32\chromedriver.exe')
@@ -162,7 +163,9 @@ def get_udemy(filtro):
             name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--2f7tE').get_text(strip=True)
             #price = course.select_one('div.price-text--price-part--Tu6MH.course-card--discount-price--3TaBk.udlite-heading-md span > span').get_text(strip=True).replace('\xa0€','')
             organizacion = course.select_one('div.udlite-text-xs.course-card--instructor-list--lIA4f').get_text(strip=True)
-            rating = course.select_one('span.udlite-sr-only').get_text(strip=True)
+            rating_1 = course.select_one('span.udlite-sr-only')
+            if (rating_1 is not None):
+                rating = rating_1.get_text(strip=True)
             dificultad = course.select_one('div.udlite-text-xs.course-card--row--1OMjg.course-card--course-meta-info--1hHb3').get_text(strip=True)
             link = course.select_one('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
             #link = course.find('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
