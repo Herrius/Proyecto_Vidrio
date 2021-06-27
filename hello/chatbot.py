@@ -8,8 +8,8 @@ import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-#nltk.download('punkt') # first-time use only  
-#nltk.download('wordnet') # first-time use only
+nltk.download('punkt') # first-time use only  
+nltk.download('wordnet') # first-time use only
     
 lemmer = nltk.stem.WordNetLemmatizer()  #WordNet is a semantically-oriented dictionary of English included in NLTK.
 remove_punct_dict = dict((ord(punct), None) for punct in string.punctuation)  
