@@ -41,7 +41,7 @@ def chatbot2(request):
 def chatbot2Respuesta(request):
     #respon = response(request.POST['msg'])
     respon = response(request.GET['msg'])
-    return respon
+    return HttpResponse(respon)
     
 def home2(request):
     # return HttpResponse('Hello from Python!')
