@@ -88,7 +88,7 @@ def response(user_response):
 
 def apiCamaSusalud(provincia, distrito):
     respuesta_final = ''
-    limite = '100'
+    limite = '10'
     url_new = 'http://datos.susalud.gob.pe/api/action/datastore/search.json?resource_id=187105ef-d71b-44e0-a5af-4762c33cefb3&limit=' + limite 
     rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup = BeautifulSoup(rss_text,'html.parser')
@@ -124,5 +124,5 @@ def apiOxigenoSusalud(provincia, distrito):
 #            respuesta_final = respuesta_final + ';' + i['NOMBRE']
     return respuesta_final
     
-apiCamaSusalud('LIMA', 'SANTIAGO DE SURCO')
+#apiCamaSusalud('LIMA', 'SANTIAGO DE SURCO')
 #get_news_google3('vacuna')
