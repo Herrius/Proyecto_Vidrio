@@ -10,8 +10,8 @@ from os import listdir
 #from nltk import word_tokenize
 
 path = os.path.dirname(os.path.realpath(__file__))
-abs_path = os.path.abspath("templates/aimls") #desarrollo
-#abs_path = os.path.abspath("hello/templates/aimls") #produccion
+#abs_path = os.path.abspath("templates/aimls") #desarrollo
+abs_path = os.path.abspath("hello/templates/aimls") #produccion
 files = listdir(abs_path)
 mybot=Kernel()
     
