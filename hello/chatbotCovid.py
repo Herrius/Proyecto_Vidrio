@@ -8,6 +8,7 @@ import urllib.request
 from bs4 import BeautifulSoup
 import json
 from nltk import word_tokenize
+import requests
 
 path = os.path.dirname(os.path.realpath(__file__))
 #abs_path = os.path.abspath("templates/aimls") #desarrollo
@@ -91,16 +92,17 @@ def apiCamaSusalud(provincia, distrito):
     limite = '5'
     url_new = 'http://datos.susalud.gob.pe/api/action/datastore/search.json?resource_id=187105ef-d71b-44e0-a5af-4762c33cefb3&limit=' + limite 
     print('prueba')
-    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
-    print('prueba0')
-    soup = BeautifulSoup(rss_text,'html.parser')
+    #rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
+    #soup = BeautifulSoup(rss_text,'html.parser')
+    page = requests.get(url_new)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    
     print('prueba1')
     site_json=json.loads(soup.text)
     results = site_json['result']
     print('prueba2')
     for rec in results['records']:
         total_camas = ''    
-        print('prueba2')
         for key in rec.keys():
             try:
                 a = int(rec[key])
