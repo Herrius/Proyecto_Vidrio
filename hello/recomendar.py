@@ -151,16 +151,23 @@ def get_udemy(filtro):
         driver.get(url)
         sleep(3)
         soup = BeautifulSoup(driver.page_source, "lxml")
-                
-        for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
+        #print(soup)    
+        
+        #for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
+        for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--2r2To.popper--popper-hover--3YydE'):
+            #print(course)
             dict={}
-            name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--2f7tE').get_text(strip=True)
+            #name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--2f7tE').get_text(strip=True)
+            name = course.select_one('div.udlite-focus-visible-target.udlite-heading-md.course-card--course-title--vVEjC').get_text(strip=True)
             #price = course.select_one('div.price-text--price-part--Tu6MH.course-card--discount-price--3TaBk.udlite-heading-md span > span').get_text(strip=True).replace('\xa0€','')
-            organizacion = course.select_one('div.udlite-text-xs.course-card--instructor-list--lIA4f').get_text(strip=True)
+            #organizacion = course.select_one('div.udlite-text-xs.course-card--instructor-list--lIA4f').get_text(strip=True)
+            organizacion = course.select_one('div.udlite-text-xs.course-card--instructor-list--nH1OC').get_text(strip=True)
             rating_1 = course.select_one('span.udlite-sr-only')
             if (rating_1 is not None):
                 rating = rating_1.get_text(strip=True)
-            dificultad = course.select_one('div.udlite-text-xs.course-card--row--1OMjg.course-card--course-meta-info--1hHb3').get_text(strip=True)
+            #dificultad = course.select_one('div.udlite-text-xs.course-card--row--1OMjg.course-card--course-meta-info--1hHb3').get_text(strip=True)
+            dificultad = course.select_one('div.udlite-text-xs.course-card--row--29Y0w.course-card--course-meta-info--2jTzN').get_text(strip=True)
+            #link = course.select_one('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
             link = course.select_one('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
             #link = course.find('a.udlite-custom-focus-visible.browse-course-card--link--3KIkQ')['href']
             
@@ -172,6 +179,7 @@ def get_udemy(filtro):
             dict['Link'] = 'https://www.udemy.com' + link
             listado_cursos.append(dict)
         driver.close()   
+        #print(listado_cursos)
     return listado_cursos
       
 #get_udemy('marketing')    
