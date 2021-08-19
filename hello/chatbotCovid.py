@@ -4,7 +4,7 @@ import os
 from aiml import Kernel
 from os import listdir
 from newspaper import Config
-from urllib import request
+import urllib.request
 from bs4 import BeautifulSoup
 import json
 from nltk import word_tokenize
@@ -67,7 +67,7 @@ def get_news_google3(filtro):
     rango_tiempo = '+when:5d'
     url_new = 'https://news.google.com/rss/search?q=' + filtro_final + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
     print(url_new)
-    rss_text = request.urlopen(url_new).read().decode('utf8')
+    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup_page=BeautifulSoup(rss_text,"xml")
     i=0
     respuesta_final = ''
@@ -90,7 +90,7 @@ def apiCamaSusalud(provincia, distrito):
     respuesta_final = ''
     limite = '100000'
     url_new = 'http://datos.susalud.gob.pe/api/action/datastore/search.json?resource_id=187105ef-d71b-44e0-a5af-4762c33cefb3&limit=' + limite 
-    rss_text = request.urlopen(url_new).read().decode('utf8')
+    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup = BeautifulSoup(rss_text,'html.parser')
     site_json=json.loads(soup.text)
     #print(site_json)
@@ -115,7 +115,7 @@ def apiOxigenoSusalud(provincia, distrito):
     respuesta_final = ''
     limite = '10'
     url_new = 'http://datos.susalud.gob.pe/api/action/datastore/search.json?resource_id=b1791142-8fcb-4766-9b8c-b0ee0ffc6dff&limit=' + limite 
-    rss_text = request.urlopen(url_new).read().decode('utf8')
+    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup = BeautifulSoup(rss_text,'html.parser')
     site_json=json.loads(soup.text)
     #print(site_json)
