@@ -90,12 +90,15 @@ def apiCamaSusalud(provincia, distrito):
     respuesta_final = ''
     limite = '5'
     url_new = 'http://datos.susalud.gob.pe/api/action/datastore/search.json?resource_id=187105ef-d71b-44e0-a5af-4762c33cefb3&limit=' + limite 
+    print('prueba')
     rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup = BeautifulSoup(rss_text,'html.parser')
     site_json=json.loads(soup.text)
     results = site_json['result']
+    print('prueba1')
     for rec in results['records']:
         total_camas = ''    
+        print('prueba2')
         for key in rec.keys():
             try:
                 a = int(rec[key])
