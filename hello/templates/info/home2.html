@@ -372,10 +372,10 @@
            There are {{ listado|length }} records:
            {% for e in listado %}
               <h4>Titulo: {{e.Titulo}}</h4>
-              <br>Organizacion: {{e.Organizacion}}</br>
-              <br>Rating: {{e.Rating}}</br>
-              <br>Dificultad: {{e.Dificultad }}</br>
-              <p>Link: {{e.Link }}</p>
+              <p>Organizacion: {{e.Organizacion}}<br>
+              Rating: {{e.Rating}}<br>
+              Dificultad: {{e.Dificultad }}<br>
+              Link: {{e.Link }}</p>
            {% endfor %}
         {% else %}
            No hay cursos
@@ -387,8 +387,8 @@
            There are {{ listado2|length }} records:
            {% for e in listado2 %}
               <h4>Titulo: {{e.Titulo}}</h4>
-              <p>Descripcion: {{e.Descripcion}}</p>
-              <p>Link: {{e.Link}}</p>
+              <p>Descripcion: {{e.Descripcion}}<br>
+              Link: {{e.Link}}</p>
            {% endfor %}
         {% else %}
            No hay cursos
@@ -400,8 +400,8 @@
            There are {{ listado3|length }} records:
            {% for e in listado3 %}
               <h4>Titulo: {{e.Titulo}}</h4>
-              <p>Descripcion: {{e.Descripcion}}</p>
-              <p>Link: {{e.Link}}</p>
+              <p>Descripcion: {{e.Descripcion}}<br>
+              Link: {{e.Link}}</p>
            {% endfor %}
         {% else %}
            No hay cursos
