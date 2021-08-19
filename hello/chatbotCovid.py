@@ -22,7 +22,7 @@ def busquedacama(user_response):
     robo_response=''  
     words = word_tokenize(user_response)
     #robo_response = apiCamaSusalud(words[0], words[1])
-    print('RESPUESTA'+robo_response)
+    print('RESPUESTA'+words[0]+ words[1])
     return robo_response
 
 def busquedaoxigeno(user_response):   
