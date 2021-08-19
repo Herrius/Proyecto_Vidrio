@@ -85,8 +85,6 @@ def get_info_formate(filtro):
 '''========================================================================='''
 '''Obtención en Crehana'''
 '''========================================================================='''
-
-
 def get_info_crehana(filtro):
     #https://www.crehana.com/pe/cursos-online/search/?q=marketing
     url = "https://www.crehana.com/pe/cursos-online/search/?q="+filtro
@@ -119,7 +117,6 @@ def get_info_crehana(filtro):
                     final = link.find('?')
                     dict['Link'] = link[0:final]
                     listado_cursos.append(dict)
-                    #print(dict)
                 
         i=i+1
     return listado_cursos
@@ -140,10 +137,8 @@ def get_udemy(filtro):
     for i in range(1,cant_pag):
         #https://www.udemy.com/courses/search/?p=2&q=machine+learning&src=ukw
         #driver = webdriver.Chrome(executable_path='D:\maria\instaladores\chromedriver_win32\chromedriver.exe')
-                
         #USAR ESTE LINK PARA DESARROLLO
         #driver = webdriver.Chrome(ChromeDriverManager().install())
-        
         #USAR ESTE CODIGO PARA HEROKU
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("--headless")
@@ -156,7 +151,6 @@ def get_udemy(filtro):
         driver.get(url)
         sleep(3)
         soup = BeautifulSoup(driver.page_source, "lxml")
-        #print(soup)
                 
         for course in soup.select('div.course-list--container--3zXPS > div.popper--popper--19faV.popper--popper-hover--4YJ5J'):
             dict={}
@@ -178,7 +172,6 @@ def get_udemy(filtro):
             dict['Link'] = 'https://www.udemy.com' + link
             listado_cursos.append(dict)
         driver.close()   
-        #print(listado_cursos)
     return listado_cursos
       
 #get_udemy('marketing')    

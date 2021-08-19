@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+<!-- File: 0prueba.aiml -->
+<!-- Author: Dr. Richard S. Wallace -->
+<!-- Last modified: julio 19, 2020 -->
+<!--  -->
+<!-- This AIML file is part of the SUPER 0.0.4 chat bot knowledge base. -->
+<!--  -->
+<!-- The SUPER brain is Copyright &copy; 2020 by ALICE AI Foundation. -->
+<!--  -->
+<!-- The SUPER brain is released under the terms of the GNU Lesser General -->
+<!-- Public License, as published by the Free Software Foundation. -->
+<!--  -->
+<!-- This file is distributed WITHOUT ANY WARRANTY; without even the  -->
+<!-- implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.   -->
+<!--  -->
+<!-- For more information see http://www.alicebot.org -->
+<category><pattern>QUE ES JAVA</pattern>
+<template>Java es un lenguaje de programación</template>
+</category>
+<category><pattern>QUE ES CHATBOT</pattern>
+<template>Chatbot is a computer program designed to simulate conversation with human users, especially over the Internet.</template>
+</category>
+<category><pattern>QUE ES LIMA</pattern>
+<template>una ciudad maravillosa</template>
+</category>
+</aiml>

@@ -23,6 +23,9 @@ urlpatterns = [
     path("chatbotRespuesta", hello.views.chatbotRespuesta, name="chatbot"),
     path("chatbot2", hello.views.chatbot2, name="chatbot2"),
     path("chatbot2Respuesta", hello.views.chatbot2Respuesta, name="chatbot2"),
+    path("chatbotCovid", hello.views.chatbotCovid, name="chatbotCovid"),
+    path("chatbotCovidRespuesta", hello.views.chatbotCovidRespuesta, name="chatbotCovid"),
+    path("consulta", hello.views.consulta, name="consulta"),
     path("db/", hello.views.db, name="db"),
     path("admin/", admin.site.urls),
 ]

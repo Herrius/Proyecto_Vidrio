@@ -59,6 +59,7 @@ def responseNLTK(user_response):
         robo_response=robo_response+"I am sorry! I don't understand you"   
     else:   
         robo_response = robo_response+sent_tokens[idx]   
+    print('RESPUESTA NLTK: ',robo_response)
     return robo_response
     
 def inicio():   

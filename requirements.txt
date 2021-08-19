@@ -10,3 +10,8 @@ dj-database-url
 aiml
 nltk
 sklearn
+matplotlib
+newspaper
+wordcloud
+urllib
+datetime
