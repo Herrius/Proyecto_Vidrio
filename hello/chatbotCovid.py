@@ -7,7 +7,7 @@ from os import listdir
 import urllib.request
 from bs4 import BeautifulSoup
 import json
-from nltk import word_tokenize
+#from nltk import word_tokenize
 
 path = os.path.dirname(os.path.realpath(__file__))
 #abs_path = os.path.abspath("templates/aimls") #desarrollo
@@ -20,7 +20,7 @@ for file in files:
 
 def busquedacama(user_response):   
     robo_response=''  
-    words = word_tokenize(user_response)
+    words = ['LIMA','LIMA']#word_tokenize(user_response)
     robo_response = apiCamaSusalud(words[0], words[1])
     print('RESPUESTA'+robo_response)
     return robo_response
@@ -88,7 +88,7 @@ def response(user_response):
 
 def apiCamaSusalud(provincia, distrito):
     respuesta_final = ''
-    limite = '10'
+    limite = '5'
     url_new = 'http://datos.susalud.gob.pe/api/action/datastore/search.json?resource_id=187105ef-d71b-44e0-a5af-4762c33cefb3&limit=' + limite 
     rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup = BeautifulSoup(rss_text,'html.parser')
