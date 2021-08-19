@@ -5,8 +5,8 @@ from aiml import Kernel
 from os import listdir
 #from newspaper import Config
 #import urllib.request
-from bs4 import BeautifulSoup
-import json
+#from bs4 import BeautifulSoup
+#import json
 #from nltk import word_tokenize
 
 path = os.path.dirname(os.path.realpath(__file__))
