@@ -21,8 +21,8 @@ for file in files:
 def busquedacama(user_response):   
     robo_response=''  
     words = word_tokenize(user_response)
-    #robo_response = apiCamaSusalud(words[0], words[1])
-    print('RESPUESTA'+words[0]+ words[1])
+    robo_response = apiCamaSusalud(words[0], words[1])
+    print('RESPUESTA'+ robo_response)
     return robo_response
 
 def busquedaoxigeno(user_response):   
