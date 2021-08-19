@@ -99,11 +99,10 @@
     function botResponse(rawText) {
 
       // Bot Response
-      $.get("/chatbotCovidRespuesta", { msg: rawText }).done(function (data,tipo) {
+      $.get("/chatbotCovidRespuesta", { msg: rawText }).done(function (data) {
         console.log(rawText);
         console.log(data);
         const msgText = data;
-        const tipo = tipo;
         appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
       });
     }

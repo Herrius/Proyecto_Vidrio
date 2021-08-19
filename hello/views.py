@@ -93,7 +93,7 @@ def chatbotCovid(request):
 #6. Registro
 def chatbotCovidRespuesta(request):
     chat = request.GET['msg']
-    tipo = request.GET['tipo']
+    tipo = 1#request.GET['tipo']
     
     if tipo is None:
         tipo = chat
@@ -128,7 +128,7 @@ def chatbotCovidRespuesta(request):
     else:
     	mensaje = 'Escoga una opción por favor, gracias.'
     
-    respon = response(mensaje,tipo)
+    respon = response(mensaje)
     return HttpResponse(respon)
 
 def consulta(request):
