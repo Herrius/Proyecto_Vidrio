@@ -12,3 +12,4 @@ sklearn
 matplotlib
 wordcloud
 datetime
+nltk
