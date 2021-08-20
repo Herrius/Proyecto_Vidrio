@@ -62,7 +62,8 @@ def generate_wordcloud(text):
     sio = io.BytesIO()
     plt.savefig(sio, format="PNG")
     encoded_img = base64.b64encode(sio.getvalue())    
-   
+    image_64 = 'data:image/png;base64,' + urllib.parse.quote(encoded_img)
+    
     #wordcloud.to_file("static/images/wc.png")
     #print("Word Cloud Saved Successfully")
     #path="wc.png"
@@ -77,7 +78,7 @@ def generate_wordcloud(text):
     #pyplot.savefig(sio, format="PNG")
     #encoded_img = sio.getvalue().encode('Base64') # On Python 3x, use base64.b64encode(sio.getvalue())
 
-    return encoded_img
+    return image_64
 
 def get_estadisticas(lista):  
     lista_tokens=[]
@@ -122,7 +123,7 @@ def get_news_google3(filtro):
         lista.append(dict)
         if i > limite:
             break;
-    get_estadisticas(lista)
+    #get_estadisticas(lista)
     return lista
 
 #get_news_google3('covid')
