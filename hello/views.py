@@ -10,6 +10,7 @@ from .chatbot2 import response
 from .chatbot import responseNLTK
 from .dboperations import insert_db
 from .consulta import get_noticias
+from .consulta import get_estadisticas
 from .chatbotCovid import busquedacama
 from .chatbotCovid import busquedaoxigeno
 from .chatbotCovid import infoVacunas
@@ -142,9 +143,8 @@ def consulta(request):
         if form.is_valid():
             parametro = form.cleaned_data['busqueda']
             listado = get_noticias(parametro)
-            listado2 = get_info_formate(parametro)
-            listado3 = get_info_crehana(parametro)
-        return render(request, "info/consulta.html", {'form': form,'listado': listado,'listado2': listado2,'listado3': listado3})
+            imagenN = get_estadisticas(listado)
+        return render(request, "info/consulta.html", {'form': form,'listado': listado,'imagenN': imagenN})
     else:
         form = Valueform(initial={'busqueda': '',})
         return render(request, "info/consulta.html", {'form': form})
