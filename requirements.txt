@@ -12,3 +12,5 @@ sklearn
 matplotlib
 wordcloud
 datetime
+tweepy
+sentiment_analysis_spanish

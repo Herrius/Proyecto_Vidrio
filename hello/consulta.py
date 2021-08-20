@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
 
-#from newspaper import Article
 from newspaper import Config
-#from urllib import request
 from bs4 import BeautifulSoup
 from datetime import datetime
-##from datetime import timedelta
-##import locale
-##from newsapi import NewsApiClient
 import urllib.request
 ##from nltk import word_tokenize
-##from bs4 import BeautifulSoup
 from wordcloud import WordCloud 
 import matplotlib.pyplot as plt
 import nltk
 import io
 import base64
+import tweepy 
+from sentiment_analysis_spanish import sentiment_analysis
 #from sentiment_analysis_spanish import sentiment_analysis
 #from textblob import TextBlob
 #from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -63,7 +59,7 @@ def generate_wordcloud(text):
     plt.savefig(sio, format='png')
     encoded_img = base64.b64encode(sio.getvalue())    
     #image_64 = 'data:image/png;base64,' + urllib.parse.quote(encoded_img)
-    image_64 = '<img src="data:image/png;base64,' + urllib.parse.quote(encoded_img) + ' />'
+    image_64 = '<img src="data:image/png;base64,' + urllib.parse.quote(encoded_img) + '" />'
     
     return image_64
 
@@ -94,7 +90,6 @@ def get_news_google3(filtro):
     config.browser_user_agent = user_agent
     rango_tiempo = '+when:30d'
     url_new = 'https://news.google.com/rss/search?q=' + filtro + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
-    #print(url_new)
     rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup_page=BeautifulSoup(rss_text,"xml")
     i=0
@@ -110,10 +105,63 @@ def get_news_google3(filtro):
         lista.append(dict)
         if i > limite:
             break;
-    #get_estadisticas(lista)
     return lista
 
-get_news_google3('covid')
+#######################################################################################
+#######################################################################################
+#Credenciales del Twitter API
+access_key = "1245052506687840256-hHElUU88rTqvbRv0bgKhRUezca1FZB"
+access_secret = "CeJk6qu3qWRzNQcYzp7b2iWbzX2riPXWn2c4j8BLZoyOo"
+consumer_key = "a8yUX9SrhHa0bvyl53HEgF80G"
+consumer_secret = "Y7uYgbkIcdBA6YopQlqnZfNuo3LKvKklKPIJuCUnXafA2SLPmZ"
+
+'''Método de Autenticación para conectarse a twitter'''
+def autenticacion():
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_key, access_secret)
+    api = tweepy.API(auth,wait_on_rate_limit=True)
+    return api
+
+def save_tweets_x_filtro(screen_name):
+    search_words = screen_name
+    date_since = "2021-08-15"
+    new_search = search_words + " -filter:retweets"
+    count=0
+    api = autenticacion()
+    alltweets = []   
+            
+    tweets = tweepy.Cursor(api.search,
+              q=new_search,
+              lang="es",
+              since=date_since).items(100)
+        
+    alltweets.extend(tweets)  
+    print(len(alltweets)) 
+    #print(alltweets)
+    
+    sentiment = sentiment_analysis.SentimentAnalysisSpanish()
+#    for line in alltweets:        
+#            count= count + 1              
+#            if not line.isspace():
+#                tweet = json.loads(line)
+#                full_text = tweet["text"]
+#                
+#                if "quoted_status" in tweet:                
+#                    tweet_quoted= tweet["quoted_status"]
+#                    if "extended_tweet" in tweet_quoted: 
+#                        tweet_extended = tweet_quoted["extended_tweet"]
+#                        if "full_text" in tweet_extended: 
+#                            full_text = tweet_extended["full_text"]
+#                            newTexto = sentiment.sentiment(full_text)
+#                            popularidad_list.append(newTexto)
+#                            numeros_list.append(count)
+#             
+#    print("total de tweets", count)
+#    GraficarDatos(numeros_list,popularidad_list,count,arc)
+
+#save_tweets_x_filtro('covid')
+
+#get_news_google3('covid')
 
 #lista = get_noticias(['gamarra'])    
 #print(lista)
