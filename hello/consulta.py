@@ -192,7 +192,7 @@ def tweets_x_filtro(screen_name):
     for tweet in tweepy.Cursor(api.search,
               q=new_search,
               lang="es",
-              since=date_since).items(15):        
+              since=date_since).items(10):        
         count= count + 1   
         full_text = tweet.text
         newTexto = sentiment.sentiment(full_text)
