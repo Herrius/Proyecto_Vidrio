@@ -145,7 +145,7 @@ def consulta(request):
             parametro = form.cleaned_data['busqueda']
             listado = get_noticias(parametro)
             imagenN = get_estadisticas(listado)
-            (imagenT, imagenT2) = tweets_x_filtro(listado)
+            (imagenT, imagenT2) = tweets_x_filtro(parametro)
         return render(request, "info/consulta.html", 
             {'form': form,'listado': listado,'imagenN': imagenN,'imagenT': imagenT,'imagenT2': imagenT2})
     else:
