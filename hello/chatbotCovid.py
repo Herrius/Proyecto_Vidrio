@@ -3,7 +3,7 @@
 import os
 from aiml import Kernel
 from os import listdir
-#from newspaper import Config
+from newspaper import Config
 import urllib.request
 from bs4 import BeautifulSoup
 import json
@@ -21,8 +21,8 @@ for file in files:
 
 def busquedacama(user_response):   
     robo_response=''  
-    words = word_tokenize(user_response)
-    robo_response = apiCamaSusalud(words[0], words[1])
+    #words = word_tokenize(user_response)
+    robo_response = apiCamaSusalud(user_response[1], user_response[2])
     print('RESPUESTA'+ robo_response)
     return robo_response
 
@@ -46,7 +46,7 @@ def validaFakeNew(user_response):
 
 def noticiasCovid(user_response):   
     robo_response=''  
-    #robo_response = get_news_google3(user_response)
+    robo_response = get_news_google3(user_response[1])
     print('RESPUESTA'+robo_response)
     return robo_response
 
@@ -57,35 +57,34 @@ def response(user_response):
     print('RESPUESTA'+robo_response)
     return robo_response
 
-#user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-#config = Config()
-#config.browser_user_agent = user_agent
-#
-##obtener noticias usando el url https://news.google.com/rss/
-#def get_news_google3(filtro):
-#    filtro_final = "covid%"+filtro
-#    #rango_tiempo = '+when:30d'
-#    rango_tiempo = '+when:5d'
-#    url_new = 'https://news.google.com/rss/search?q=' + filtro_final + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
-#    print(url_new)
-#    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
-#    soup_page=BeautifulSoup(rss_text,"xml")
-#    i=0
-#    respuesta_final = ''
-#    for news in soup_page.findAll("item"):
-#        i=i+1
-#        print(i)
-#        #url = news.link.text
-#        #fecha_str = datetime.strptime(news.pubDate.text, '%a, %d %b %Y %H:%M:%S GMT')
-#        titulo = news.title.text
-#        texto = news.description.text
-#        origen = news.source.text
-#        total = titulo +' ' + texto + ' ' +origen 
-#        print(total)
-#        respuesta_final = respuesta_final + ';' + origen
-#        if i > 10:
-#            break;
-#    return respuesta_final
+#obtener noticias usando el url https://news.google.com/rss/
+def get_news_google3(filtro):
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    config = Config()
+    config.browser_user_agent = user_agent
+    filtro_final = "covid%"+filtro
+    #rango_tiempo = '+when:30d'
+    rango_tiempo = '+when:5d'
+    url_new = 'https://news.google.com/rss/search?q=' + filtro_final + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
+    print(url_new)
+    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
+    soup_page=BeautifulSoup(rss_text,"xml")
+    i=0
+    respuesta_final = ''
+    for news in soup_page.findAll("item"):
+        i=i+1
+        print(i)
+        #url = news.link.text
+        #fecha_str = datetime.strptime(news.pubDate.text, '%a, %d %b %Y %H:%M:%S GMT')
+        titulo = news.title.text
+        texto = news.description.text
+        origen = news.source.text
+        total = titulo +' ' + texto + ' ' +origen 
+        print(total)
+        respuesta_final = respuesta_final + ';' + origen
+        if i > 10:
+            break;
+    return respuesta_final
 
 def apiCamaSusalud(provincia, distrito):
     respuesta_final = ''

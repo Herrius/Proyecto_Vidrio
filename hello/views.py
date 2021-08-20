@@ -15,6 +15,7 @@ from .chatbotCovid import busquedaoxigeno
 from .chatbotCovid import infoVacunas
 from .chatbotCovid import validaFakeNew
 from .chatbotCovid import noticiasCovid
+from nltk import word_tokenize
 
 # Create your views here.
 def index(request):
@@ -93,7 +94,8 @@ def chatbotCovid(request):
 #6. Registro
 def chatbotCovidRespuesta(request):
     chat = request.GET['msg']
-    tipo = 1#request.GET['tipo']
+    words = word_tokenize(chat)
+    tipo = words[0]
     
     if tipo is None:
         tipo = chat
@@ -102,7 +104,7 @@ def chatbotCovidRespuesta(request):
         if chat is None:
             mensaje = 'Ingrese provincia y distrito'
         else:
-            mensaje = busquedacama(chat)
+            mensaje = busquedacama(words)
     elif tipo == 2:
         if chat is None:
             mensaje = 'Ingrese provincia y distrito'
@@ -122,7 +124,7 @@ def chatbotCovidRespuesta(request):
         if chat is None:
             mensaje = 'Ingrese palabras principales'
         else:
-            mensaje = noticiasCovid(chat)
+            mensaje = noticiasCovid(words)
     elif tipo == 6:
     	mensaje = 'En construcción' 
     else:
