@@ -12,10 +12,7 @@ import io
 import base64
 import tweepy 
 from sentiment_analysis_spanish import sentiment_analysis
-#from sentiment_analysis_spanish import sentiment_analysis
-#from textblob import TextBlob
-#from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
-#
+
 #user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
 #config = Config()
 #config.browser_user_agent = user_agent
@@ -58,9 +55,9 @@ def generate_wordcloud(text):
     sio = io.BytesIO()
     plt.savefig(sio, format='png')
     encoded_img = base64.b64encode(sio.getvalue())    
-    #image_64 = 'data:image/png;base64,' + urllib.parse.quote(encoded_img)
-    image_64 = '<img src="data:image/png;base64,' + urllib.parse.quote(encoded_img) + '" />'
-    
+    image_64 = 'data:image/png;base64,' + urllib.parse.quote(encoded_img)
+    #image_64 = '<img src="data:image/png;base64,' + urllib.parse.quote(encoded_img) + '" />'
+    sio.close()
     return image_64
 
 def get_estadisticas(lista):  

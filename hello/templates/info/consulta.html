@@ -31,6 +31,10 @@
 <link rel="stylesheet" href="{% static 'css/styles.css' %}"  />
 <!-- Font Awesome -->
 <link href="{% static 'font/css/font-awesome.min.css' %}"  rel="stylesheet">
+<!--
+<script type="text/javascript">
+    $("#plt").attr('src',"data:image/png;base64, " + {% if imagenN %} {{imagenN}} {% endif %});
+</script> -->
 </head>
 
 <body>
@@ -381,7 +385,11 @@
         {% endif %}   
         
        <div id="ShowImage">{% if imagenN %} {{imagenN}} {% endif %} </div>
-        
+       <img id="plt" src=""></img>
+       {% if imagenN %}
+        <img src="{{ imagenN }}"  />
+        {% endif %}
+
        <h3><span class="glyphicon glyphicon-info-sign"></span> ESTADÍSTICAS NOTICIAS</h3>
       
         {% if listado2 %}
