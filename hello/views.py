@@ -96,7 +96,7 @@ def chatbotCovidRespuesta(request):
     chat = request.GET['msg']
     words = word_tokenize(chat)
     tipo = int(words[0])
-    print('tipo:'+tipo)
+    print('tipo:'+words[0])
     
     if tipo is None:
         tipo = chat
