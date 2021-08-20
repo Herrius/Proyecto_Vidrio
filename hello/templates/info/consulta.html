@@ -366,16 +366,15 @@
       </form>  
     </div>
     <div class="row">
-      <h3><span class="glyphicon glyphicon-info-sign"></span> NOTICIAS</h3>
+      <h3><span class="glyphicon glyphicon-info-sign"></span> ULTIMAS NOTICIAS</h3>
       
         {% if listado %}
            There are {{ listado|length }} records:
            {% for e in listado %}
               <h4>Titulo: {{e.Titulo}}</h4>
-              <p>Organizacion: {{e.Organizacion}}<br>
-              Rating: {{e.Rating}}<br>
-              Dificultad: {{e.Dificultad }}<br>
-              Link: {{e.Link }}</p>
+              <p>Origen: {{e.Origen}}<br>
+              Fecha: {{e.Fecha}}<br>
+              Mensaje: {{e.Mensaje }}</p>
            {% endfor %}
         {% else %}
            No hay cursos

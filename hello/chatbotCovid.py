@@ -63,25 +63,24 @@ def get_news_google3(filtro):
     config = Config()
     config.browser_user_agent = user_agent
     filtro_final = "covid%"+filtro
-    #rango_tiempo = '+when:30d'
     rango_tiempo = '+when:5d'
     url_new = 'https://news.google.com/rss/search?q=' + filtro_final + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
-    print(url_new)
+    #print(url_new)
     rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
     soup_page=BeautifulSoup(rss_text,"xml")
     i=0
     respuesta_final = ''
     for news in soup_page.findAll("item"):
         i=i+1
-        print(i)
+        #print(i)
         #url = news.link.text
         #fecha_str = datetime.strptime(news.pubDate.text, '%a, %d %b %Y %H:%M:%S GMT')
         titulo = news.title.text
         texto = news.description.text
         origen = news.source.text
         total = titulo +' ' + texto + ' ' +origen 
-        print(total)
-        respuesta_final = respuesta_final + ';' + origen
+        #print(total)
+        respuesta_final = respuesta_final + ';' + total
         if i > 10:
             break;
     return respuesta_final
