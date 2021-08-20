@@ -128,8 +128,8 @@ def chatbotCovidRespuesta(request):
             mensaje = noticiasCovid(words)
     elif tipo == 6:
     	mensaje = 'En construcción' 
-    else:
-    	mensaje = 'Escoga una opción por favor, gracias.'
+    #else:
+    #	mensaje = 'Escoga una opción por favor, gracias.'
     
     #respon = response(mensaje)
     return HttpResponse(mensaje)
