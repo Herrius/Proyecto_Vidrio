@@ -102,15 +102,7 @@ import urllib.request
 
 def get_noticias(keywords):
     lista=[]
-    #keywords = ['scotiabank']
-    fecha_desde = '07/01/2021'
-    fecha_hasta = '07/30/2021'
-    tipo = 1
-    
-#    for i in range(0, len(keywords)):
-#        #print(keywords[i])
-#        listafinal3 = get_news_google3(keywords[i],fecha_desde,fecha_hasta,tipo)
-#        lista.extend(listafinal3)
+    lista = get_news_google3(keywords)
     return lista   
   
 #obtener noticias usando el url https://news.google.com/rss/

@@ -80,7 +80,7 @@ def get_news_google3(filtro):
         origen = news.source.text
         total = titulo +' ' + texto + ' ' +origen 
         #print(total)
-        respuesta_final = respuesta_final + ';' + total
+        respuesta_final = respuesta_final + ';' + origen
         if i > 10:
             break;
     return respuesta_final
