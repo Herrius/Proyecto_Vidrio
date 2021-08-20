@@ -96,6 +96,7 @@ def chatbotCovidRespuesta(request):
     chat = request.GET['msg']
     words = word_tokenize(chat)
     tipo = words[0]
+    print('tipo:'+tipo)
     
     if tipo is None:
         tipo = chat
@@ -130,8 +131,8 @@ def chatbotCovidRespuesta(request):
     else:
     	mensaje = 'Escoga una opción por favor, gracias.'
     
-    respon = response(mensaje)
-    return HttpResponse(respon)
+    #respon = response(mensaje)
+    return HttpResponse(mensaje)
 
 def consulta(request):
     # return HttpResponse('Hello from Python!')
