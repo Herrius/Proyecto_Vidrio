@@ -375,7 +375,7 @@
         {% if listado %}
            There are {{ listado|length }} records:
            {% for e in listado %}
-              <h4>Titulo: {{e.Titulo}}</h4>
+              <h5>Titulo: {{e.Titulo}}</h5>
               <p>Origen: {{e.Origen}}<br>
               Fecha: {{e.Fecha}}<br>
               Link: {{e.Link }}</p>
@@ -386,33 +386,18 @@
         
        {% if imagenN %}
         <img src="{{ imagenN }}"  />
-        {% endif %}
+       {% endif %}
 
-       <h3><span class="glyphicon glyphicon-info-sign"></span> ESTADÍSTICAS NOTICIAS</h3>
-      
-        {% if listado2 %}
-           There are {{ listado2|length }} records:
-           {% for e in listado2 %}
-              <h4>Titulo: {{e.Titulo}}</h4>
-              <p>Descripcion: {{e.Descripcion}}<br>
-              Link: {{e.Link}}</p>
-           {% endfor %}
-        {% else %}
-           No hay cursos
-        {% endif %}     
-        
-        <h3><span class="glyphicon glyphicon-info-sign"></span> ANALISIS DE SENTIMIENTOS</h3>
-      
-        {% if listado3 %}
-           There are {{ listado3|length }} records:
-           {% for e in listado3 %}
-              <h4>Titulo: {{e.Titulo}}</h4>
-              <p>Descripcion: {{e.Descripcion}}<br>
-              Link: {{e.Link}}</p>
-           {% endfor %}
-        {% else %}
-           No hay cursos
-        {% endif %}        
+       <h3><span class="glyphicon glyphicon-info-sign"></span> ANALISIS TWITTER </h3>
+         
+       {% if imagenT %}
+        <img src="{{ imagenT }}"  />
+       {% endif %}
+ 
+       {% if imagenT2 %}
+        <img src="{{ imagenT2 }}"  />
+       {% endif %}
+
     </div>
     <!-- Team Member's Details -->
     <!--

@@ -4,7 +4,6 @@ from newspaper import Config
 from bs4 import BeautifulSoup
 from datetime import datetime
 import urllib.request
-##from nltk import word_tokenize
 from wordcloud import WordCloud 
 import matplotlib.pyplot as plt
 import nltk
@@ -185,28 +184,16 @@ def tweets_x_filtro(screen_name):
     new_search = search_words + " -filter:retweets"
     count=0
     api = autenticacion()
-    alltweets = []   
     popularidad_list = []
     numeros_list = []
     tweets_tokens_all=[]
     
-    tweets = tweepy.Cursor(api.search,
+    sentiment = sentiment_analysis.SentimentAnalysisSpanish()
+    for tweet in tweepy.Cursor(api.search,
               q=new_search,
               lang="es",
-              since=date_since).items(100)
-        
-    alltweets.extend(tweets)  
-    print(len(alltweets)) 
-    #print(alltweets)
-    
-    sentiment = sentiment_analysis.SentimentAnalysisSpanish()
-    for tweet in alltweets:        
+              since=date_since).items(15):        
         count= count + 1   
-        #print(count)
-        #print(tweet.id_str)
-        #print(tweet.created_at)
-        #print(tweet.text)
-         
         full_text = tweet.text
         newTexto = sentiment.sentiment(full_text)
         popularidad_list.append(newTexto)
@@ -217,10 +204,11 @@ def tweets_x_filtro(screen_name):
                             if term not in stopwords]
                 
         tweets_tokens_all.extend(terms_all)
-    
+        
+    print(count)     
     imagenT = GraficarDatos(numeros_list,popularidad_list,count,'')
     imagenT2 = get_estadisticasTwitter(tweets_tokens_all)
-    return tweets_tokens_all, imagenT, imagenT2
+    return imagenT, imagenT2
     #print("total de tweets", count)
     
 #tweets_x_filtro('coronavirus')

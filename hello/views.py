@@ -11,6 +11,7 @@ from .chatbot import responseNLTK
 from .dboperations import insert_db
 from .consulta import get_noticias
 from .consulta import get_estadisticas
+from .consulta import tweets_x_filtro
 from .chatbotCovid import busquedacama
 from .chatbotCovid import busquedaoxigeno
 from .chatbotCovid import infoVacunas
@@ -144,7 +145,9 @@ def consulta(request):
             parametro = form.cleaned_data['busqueda']
             listado = get_noticias(parametro)
             imagenN = get_estadisticas(listado)
-        return render(request, "info/consulta.html", {'form': form,'listado': listado,'imagenN': imagenN})
+            (imagenT, imagenT2) = tweets_x_filtro(listado)
+        return render(request, "info/consulta.html", 
+            {'form': form,'listado': listado,'imagenN': imagenN,'imagenT': imagenT,'imagenT2': imagenT2})
     else:
         form = Valueform(initial={'busqueda': '',})
         return render(request, "info/consulta.html", {'form': form})
