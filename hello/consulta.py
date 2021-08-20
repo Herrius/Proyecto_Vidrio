@@ -42,36 +42,6 @@ def get_noticias(keywords):
     lista=[]
     lista = get_news_google3(keywords)
     return lista   
-  
-#obtener noticias usando el url https://news.google.com/rss/
-def get_news_google3(filtro):
-    lista=[]
-    limite=10
-    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
-    config = Config()
-    config.browser_user_agent = user_agent
-    filtro_final = "covid%"+filtro
-    rango_tiempo = '+when:5d'
-    url_new = 'https://news.google.com/rss/search?q=' + filtro_final + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
-    #print(url_new)
-    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
-    soup_page=BeautifulSoup(rss_text,"xml")
-    i=0
-    for news in soup_page.findAll("item"):
-        i=i+1
-        dict={}
-        #print(i)
-        #url = news.link.text
-        fecha_str = datetime.strptime(news.pubDate.text, '%a, %d %b %Y %H:%M:%S GMT')
-        dict['Fecha']=fecha_str
-        dict['Titulo']=news.title.text
-        dict['Mensaje']=news.description.text
-        dict['Origen']=news.source.text
-        lista.append(dict)
-        if i > limite:
-            break;
-    get_estadisticas(lista)
-    return lista
 
 def generate_wordcloud(text): 
     wordcloud = WordCloud(
@@ -88,10 +58,11 @@ def generate_wordcloud(text):
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
     
-    sio = io.StringIO()
+    #sio = io.StringIO()
+    sio = io.BytesIO()
     plt.savefig(sio, format="PNG")
-    encoded_img = base64.b64encode(sio.getvalue())
-
+    encoded_img = base64.b64encode(sio.getvalue())    
+   
     #wordcloud.to_file("static/images/wc.png")
     #print("Word Cloud Saved Successfully")
     #path="wc.png"
@@ -111,7 +82,7 @@ def generate_wordcloud(text):
 def get_estadisticas(lista):  
     lista_tokens=[]
     for i in lista:    
-        mensaje = i["Mensaje"]
+        mensaje = i["Titulo"]
         words = nltk.word_tokenize(mensaje)
         lista_tokens.extend(words)
         
@@ -125,6 +96,36 @@ def get_estadisticas(lista):
     terms_only_string = " ".join(str(v) for v in lista_tokens_final)
     imagen = generate_wordcloud(terms_only_string)
     return imagen
+
+#obtener noticias usando el url https://news.google.com/rss/
+def get_news_google3(filtro):
+    lista=[]
+    limite=10
+    user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
+    config = Config()
+    config.browser_user_agent = user_agent
+    rango_tiempo = '+when:30d'
+    url_new = 'https://news.google.com/rss/search?q=' + filtro + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
+    #print(url_new)
+    rss_text = urllib.request.urlopen(url_new).read().decode('utf8')
+    soup_page=BeautifulSoup(rss_text,"xml")
+    i=0
+    for news in soup_page.findAll("item"):
+        i=i+1
+        dict={}
+        fecha_str = datetime.strptime(news.pubDate.text, '%a, %d %b %Y %H:%M:%S GMT')
+        dict['Fecha']=fecha_str
+        dict['Titulo']=news.title.text
+        #dict['Mensaje']=news.description.text
+        dict['Origen']=news.source.text
+        dict['Link']=news.link.text
+        lista.append(dict)
+        if i > limite:
+            break;
+    get_estadisticas(lista)
+    return lista
+
+#get_news_google3('covid')
 
 #lista = get_noticias(['gamarra'])    
 #print(lista)

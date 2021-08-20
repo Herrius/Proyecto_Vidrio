@@ -374,13 +374,13 @@
               <h4>Titulo: {{e.Titulo}}</h4>
               <p>Origen: {{e.Origen}}<br>
               Fecha: {{e.Fecha}}<br>
-              Mensaje: {{e.Mensaje }}</p>
+              Link: {{e.Link }}</p>
            {% endfor %}
         {% else %}
            No hay cursos
         {% endif %}   
         
-        <div id="ShowImage">{% if imagenN %} {{e.imagenN}} </div>
+        <div id="ShowImage">{% if imagenN %} {{e.imagenN}} {% endif %} </div>
         
        <h3><span class="glyphicon glyphicon-info-sign"></span> ESTADÍSTICAS NOTICIAS</h3>
       
