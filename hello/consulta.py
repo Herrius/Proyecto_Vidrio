@@ -12,6 +12,7 @@ import io
 import base64
 import tweepy 
 from sentiment_analysis_spanish import sentiment_analysis
+import re
 
 #user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
 #config = Config()
@@ -29,6 +30,8 @@ stopwords.append('.')
 stopwords.append('?')
 stopwords.append('"')
 stopwords.append('>')
+stopwords.append('htpps')
+stopwords.append('co')
 stopwords.extend(['…','(',')','“','”',"''",'``','•',';'])
 
 def get_noticias(keywords):
@@ -50,8 +53,6 @@ def generate_wordcloud(text):
     
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis("off")
-    
-    #sio = io.StringIO()
     sio = io.BytesIO()
     plt.savefig(sio, format='png')
     encoded_img = base64.b64encode(sio.getvalue())    
@@ -119,14 +120,76 @@ def autenticacion():
     api = tweepy.API(auth,wait_on_rate_limit=True)
     return api
 
-def save_tweets_x_filtro(screen_name):
+def get_estadisticasTwitter(lista_tokens_final):  
+      
+#    print('Distribución de Frequencia de Todas las Palabras')
+#    fdist_todos = nltk.FreqDist(lista_tokens_final)
+#    print('50 palabras mas frequentes',fdist_todos.most_common(50))
+#    fdist_todos.plot(30, cumulative=False)    
+        
+    terms_only_string = " ".join(str(v) for v in lista_tokens_final)
+    imagen = generate_wordcloud(terms_only_string)
+    return imagen
+
+def preprocess(s):
+    emoticons_str = r"""
+    (?:
+        [:=;] # Eyes
+        [oO\-]? # Nose (optional)
+        [D\)\]\(\]/\\OpP] # Mouth
+    )"""
+        
+    regex_str =[emoticons_str,
+                r'<[^>]+>' , #HTML tags
+                r'(?:@[\w_]+)' , #@-Mención
+                r"(?:\#+[\w_]+[\w\'_\-]*[\w_]+)" , #Hash-tags
+                r'http[s]?://(?:[a-z]|[0-9]|[$-_@.&amp;+]|[!*\(\),]|(?:%[0-9a-f][0-9a-f]))+', #URLs
+                r'(?:[\w_]+)' , #Otras Palabras
+                r'(?:\S)' #Otras Palabras
+                ]    
+    
+    tokens_re = re.compile (r'('+'|'.join(regex_str)+')' ,re.VERBOSE | re.IGNORECASE)
+    tokens = tokens_re.findall(s)
+    return tokens
+
+def GraficarDatos(numeros_list,popularidad_list,numero,nombre):
+    axes = plt.gca()
+    axes.set_ylim([-1, 2])
+    
+    plt.scatter(numeros_list, popularidad_list)
+    popularidadPromedio = (sum(popularidad_list))/(len(popularidad_list))
+    popularidadPromedio = "{0:.0f}%".format(popularidadPromedio * 100)
+    #print(popularidadPromedio)
+    #time1  = datetime.now().strftime("A : %H:%M\n El: %m-%d-%y")
+    '''plt.text(0, 1.25, 
+             "Sentimiento promedio:  " + str(popularidadPromedio) + "\n", 
+             fontsize=12, 
+             bbox = dict(facecolor='none', 
+                         edgecolor='black', 
+                         boxstyle='square, pad = 1'))
+    '''
+    plt.title("Sentimientos en twitter")
+    plt.xlabel("Numero de tweets")
+    plt.ylabel("Sentimiento")
+    sio = io.BytesIO()
+    plt.savefig(sio, format='png')
+    encoded_img = base64.b64encode(sio.getvalue())    
+    image_64 = 'data:image/png;base64,' + urllib.parse.quote(encoded_img)
+    #image_64 = '<img src="data:image/png;base64,' + urllib.parse.quote(encoded_img) + '" />'
+    sio.close()
+    return image_64
+    
+def tweets_x_filtro(screen_name):
     search_words = screen_name
     date_since = "2021-08-15"
     new_search = search_words + " -filter:retweets"
     count=0
     api = autenticacion()
     alltweets = []   
-            
+    popularidad_list = []
+    numeros_list = []
+    tweets_tokens_all=[]
+    
     tweets = tweepy.Cursor(api.search,
               q=new_search,
               lang="es",
@@ -137,29 +200,32 @@ def save_tweets_x_filtro(screen_name):
     #print(alltweets)
     
     sentiment = sentiment_analysis.SentimentAnalysisSpanish()
-#    for line in alltweets:        
-#            count= count + 1              
-#            if not line.isspace():
-#                tweet = json.loads(line)
-#                full_text = tweet["text"]
-#                
-#                if "quoted_status" in tweet:                
-#                    tweet_quoted= tweet["quoted_status"]
-#                    if "extended_tweet" in tweet_quoted: 
-#                        tweet_extended = tweet_quoted["extended_tweet"]
-#                        if "full_text" in tweet_extended: 
-#                            full_text = tweet_extended["full_text"]
-#                            newTexto = sentiment.sentiment(full_text)
-#                            popularidad_list.append(newTexto)
-#                            numeros_list.append(count)
-#             
-#    print("total de tweets", count)
-#    GraficarDatos(numeros_list,popularidad_list,count,arc)
-
-#save_tweets_x_filtro('covid')
+    for tweet in alltweets:        
+        count= count + 1   
+        #print(count)
+        #print(tweet.id_str)
+        #print(tweet.created_at)
+        #print(tweet.text)
+         
+        full_text = tweet.text
+        newTexto = sentiment.sentiment(full_text)
+        popularidad_list.append(newTexto)
+        numeros_list.append(count)
+        
+        "#Crea una lista con todos los términos sin stop"
+        terms_all = [term for term in preprocess(full_text) 
+                            if term not in stopwords]
+                
+        tweets_tokens_all.extend(terms_all)
+    
+    imagenT = GraficarDatos(numeros_list,popularidad_list,count,'')
+    imagenT2 = get_estadisticasTwitter(tweets_tokens_all)
+    return tweets_tokens_all, imagenT, imagenT2
+    #print("total de tweets", count)
+    
+#tweets_x_filtro('coronavirus')
 
 #get_news_google3('covid')
-
 #lista = get_noticias(['gamarra'])    
 #print(lista)
 #estadisticas = get_estadisticas(lista)
