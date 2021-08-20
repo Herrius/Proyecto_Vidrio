@@ -11,9 +11,9 @@ from datetime import datetime
 import urllib.request
 ##from nltk import word_tokenize
 ##from bs4 import BeautifulSoup
-#from wordcloud import WordCloud 
+from wordcloud import WordCloud 
 #import matplotlib.pyplot as plt
-#import nltk
+import nltk
 #from sentiment_analysis_spanish import sentiment_analysis
 #from textblob import TextBlob
 #from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
@@ -22,83 +22,19 @@ import urllib.request
 #config = Config()
 #config.browser_user_agent = user_agent
 #
-#stopwords = nltk.corpus.stopwords.words('spanish')
-#stopwords.append('----')
-#stopwords.append('---')
-#stopwords.append('--')
-#stopwords.append(':')
-#stopwords.append(',')
-#stopwords.append('!')
-#stopwords.append('/')
-#stopwords.append('.')
-#stopwords.append('?')
-#stopwords.append('"')
-#stopwords.append('>')
-#stopwords.extend(['…','(',')','“','”',"''",'``','•',';'])
-
-#obtener noticias usando el url https://news.google.com/rss/
-#límite de noticias sólo 100
-#no se puede hacer el rango de fechas
-#def get_news_google3(filtro, fecha_desde, fecha_hasta,tipo):
-#    rango_tiempo = '+when:30d'
-#    url_new = 'https://news.google.com/rss/search?q=' + filtro + rango_tiempo + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
-#    #url_new = 'https://news.google.com/rss/search?q=' + filtro + '&sort=date&hl=es-419&gl=PE&ceid=PE:es-419'
-#    rss_text = request.urlopen(url_new).read().decode('utf8')
-#    soup_page=BeautifulSoup(rss_text,"xml")
-#    i=0
-#    list=[]
-#    
-#    for news in soup_page.findAll("item"):
-#        i=i+1
-#        #print(i)
-#        url = news.link.text
-#        fecha_str = datetime.strptime(news.pubDate.text, '%a, %d %b %Y %H:%M:%S GMT')
-#        titulo = news.title.text
-#        texto = news.description.text
-#        origen = news.source.text
-#        #print(url)
-#        ind = True
-#        if tipo == 0:
-#            if fecha_str > datetime.strptime(fecha_desde, '%m/%d/%Y') and fecha_str < datetime.strptime(fecha_hasta, '%m/%d/%Y'):                                
-#                ind = True
-#            else:
-#                ind = False
-#        #if fecha_str > datetime.strptime(fecha_desde, '%m/%d/%Y') and fecha_str < datetime.strptime(fecha_hasta, '%m/%d/%Y'):                                
-#        if ind:                                
-#            fecha = fecha_str.strftime('%Y%m%d') 
-#            dict={}
-#            try: 
-#                article = Article(url,config=config)
-#                article.download()
-#                article.parse()
-#                article.nlp()
-#                if article.publish_date is not None:                    
-#                    fecha = article.publish_date.strftime('%Y%m%d') 
-#                dict['Fecha']=fecha
-#                dict['Titulo']=article.title
-#                dict['Mensaje']=article.text
-#                dict['URL']=url
-#                dict['País']=''
-#                dict['Like']=''
-#                dict['Tipo']='Noticia'
-#                dict['Banco']=filtro
-#                dict['Resumen']=article.summary
-#                dict['Origen']=origen
-#                list.append(dict)
-#            except: 
-#                print("Timeout occurred")
-#                dict['Fecha']=fecha
-#                dict['Titulo']=titulo
-#                dict['Mensaje']=texto
-#                dict['URL']=url
-#                dict['País']=''
-#                dict['Like']=''
-#                dict['Tipo']='Noticia'
-#                dict['Banco']=filtro
-#                dict['Resumen']=''
-#                dict['Origen']=origen
-#                list.append(dict)
-#    return list
+stopwords = nltk.corpus.stopwords.words('spanish')
+stopwords.append('----')
+stopwords.append('---')
+stopwords.append('--')
+stopwords.append(':')
+stopwords.append(',')
+stopwords.append('!')
+stopwords.append('/')
+stopwords.append('.')
+stopwords.append('?')
+stopwords.append('"')
+stopwords.append('>')
+stopwords.extend(['…','(',')','“','”',"''",'``','•',';'])
 
 def get_noticias(keywords):
     lista=[]
@@ -133,28 +69,28 @@ def get_news_google3(filtro):
             break;
     return lista
 
-#def generate_wordcloud(text): 
-#    wordcloud = WordCloud(
-#         background_color="white", max_words=5000, 
-#         min_font_size = 10, 
-#         max_font_size=100, 
-#         #relative_scaling = 0.5, 
-#         stopwords=stopwords,
-#         scale=3,
-#         random_state=3)
-#         #normalize_plurals= True)
-#    wordcloud.generate(text)
-#    
-#    wordcloud.to_file("static/images/wc.png")
-#    print("Word Cloud Saved Successfully")
-#    #path="wc.png"
-#    #filename = Image.open("wc.png")
-#    #filename.show() 
-#            
-#    #plt.figure(figsize=(25,25))
-#    #plt.imshow(wordcloud)
-#    #plt.axis("off")
-#    #plt.show()
+def generate_wordcloud(text): 
+    wordcloud = WordCloud(
+         background_color="white", max_words=5000, 
+         min_font_size = 10, 
+         max_font_size=100, 
+         #relative_scaling = 0.5, 
+         stopwords=stopwords,
+         scale=3,
+         random_state=3)
+         #normalize_plurals= True)
+    wordcloud.generate(text)
+    
+    wordcloud.to_file("static/images/wc.png")
+    print("Word Cloud Saved Successfully")
+    #path="wc.png"
+    #filename = Image.open("wc.png")
+    #filename.show() 
+            
+    #plt.figure(figsize=(25,25))
+    #plt.imshow(wordcloud)
+    #plt.axis("off")
+    #plt.show()
 #    
 #def get_estadisticas(lista):  
 #    lista_tokens=[]
