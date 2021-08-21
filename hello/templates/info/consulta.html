@@ -376,8 +376,7 @@
            There are {{ listado|length }} records:
            {% for e in listado %}
               <h5>Titulo: <a href="{{e.Link}}" >{{e.Titulo}}</a></h5>
-              <p>Fecha: {{e.Fecha}}<br>
-              Link: {{e.Link }}</p>
+              <p>Fecha: {{e.Fecha}}</p>
            {% endfor %}
         {% else %}
            No hay cursos
