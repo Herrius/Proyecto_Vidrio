@@ -139,6 +139,10 @@ def chatbotCovidRespuesta(request):
 
 def consulta(request):
     # return HttpResponse('Hello from Python!')
+    imagenT = ''
+    imagenT2 = ''
+    listado = []
+    imagenN =''
     if request.method == 'POST':
         # Check if the form is valid:
         form = Value2form(request.POST)
