@@ -148,8 +148,8 @@ def consulta(request):
             if tipo == 'Noticias':
                 listado = get_noticias(parametro)
                 imagenN = get_estadisticas(listado)
-         else:   
-            (imagenT, imagenT2) = tweets_x_filtro(parametro)
+            else:   
+                (imagenT, imagenT2) = tweets_x_filtro(parametro)
         return render(request, "info/consulta.html", 
             {'form': form,'listado': listado,'imagenN': imagenN,'imagenT': imagenT,'imagenT2': imagenT2})
     else:
