@@ -375,9 +375,8 @@
         {% if listado %}
            There are {{ listado|length }} records:
            {% for e in listado %}
-              <h5>Titulo: {{e.Titulo}}</h5>
-              <p>Origen: {{e.Origen}}<br>
-              Fecha: {{e.Fecha}}<br>
+              <h5>Titulo: <a href="{{e.Link}}" >{{e.Titulo}}</a></h5>
+              <p>Fecha: {{e.Fecha}}<br>
               Link: {{e.Link }}</p>
            {% endfor %}
         {% else %}

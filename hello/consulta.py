@@ -184,7 +184,7 @@ def tweets_x_filtro(screen_name):
     date_since = "2021-08-15"
     new_search = search_words + " -filter:retweets"
     count=0
-    limite=10
+    limite=5
     api = autenticacion()
     popularidad_list = []
     numeros_list = []
