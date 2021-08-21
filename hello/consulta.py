@@ -81,7 +81,7 @@ def get_estadisticas(lista):
 #obtener noticias usando el url https://news.google.com/rss/
 def get_news_google3(filtro):
     lista=[]
-    limite=5
+    limite=15
     user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
     config = Config()
     config.browser_user_agent = user_agent
@@ -183,7 +183,7 @@ def tweets_x_filtro(screen_name):
     date_since = "2021-08-15"
     new_search = search_words + " -filter:retweets"
     count=0
-    limite=5
+    limite=15
     api = autenticacion()
     popularidad_list = []
     numeros_list = []

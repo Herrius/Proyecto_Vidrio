@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import Valueform
+from .forms import Value2form
 from .models import Greeting
 from .recomendar import get_info_coursera
 from .recomendar import get_udemy
@@ -140,16 +141,19 @@ def consulta(request):
     # return HttpResponse('Hello from Python!')
     if request.method == 'POST':
         # Check if the form is valid:
-        form = Valueform(request.POST)
+        form = Value2form(request.POST)
         if form.is_valid():
             parametro = form.cleaned_data['busqueda']
-            listado = get_noticias(parametro)
-            imagenN = get_estadisticas(listado)
+            tipo = form.cleaned_data['tipo']
+            if tipo == 'Noticias':
+                listado = get_noticias(parametro)
+                imagenN = get_estadisticas(listado)
+         else:   
             (imagenT, imagenT2) = tweets_x_filtro(parametro)
         return render(request, "info/consulta.html", 
             {'form': form,'listado': listado,'imagenN': imagenN,'imagenT': imagenT,'imagenT2': imagenT2})
     else:
-        form = Valueform(initial={'busqueda': '',})
+        form = Value2form(initial={'busqueda': '',})
         return render(request, "info/consulta.html", {'form': form})
     
 def save_db(list1,list2,list3):
