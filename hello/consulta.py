@@ -64,7 +64,8 @@ def get_estadisticas(lista):
     lista_tokens=[]
     for i in lista:    
         mensaje = i["Titulo"]
-        words = nltk.word_tokenize(mensaje)
+        index = mensaje.find('-')
+        words = nltk.word_tokenize(mensaje[:index])
         lista_tokens.extend(words)
         
     lista_tokens_final = [term for term in lista_tokens if term not in stopwords]
@@ -183,7 +184,7 @@ def tweets_x_filtro(screen_name):
     date_since = "2021-08-15"
     new_search = search_words + " -filter:retweets"
     count=0
-    limite=15
+    limite=10
     api = autenticacion()
     popularidad_list = []
     numeros_list = []
