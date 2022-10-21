@@ -11,7 +11,7 @@ def cargar_modelo(nombre):
 
 def clasifica(datos):    
     listado = datos.split(sep=';')
-    ruta = '/app/modelos/'
+    ruta = '/app/hello/modelos/'
     nombre='modelo.pkl'
     modelo = cargar_modelo(ruta+nombre)
     print(listado)
