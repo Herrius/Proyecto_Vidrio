@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from pickle import load
-
+from sklearn import svm
         
 def cargar_modelo(nombre): 
     input = open(nombre,  'rb')
