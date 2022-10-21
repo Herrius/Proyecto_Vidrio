@@ -1,12 +1,9 @@
 from django.shortcuts import render
 from .forms import Valueform
-from .clasificacion import clasifica
+#from .clasificacion import clasifica
 
 
 def index(request):
-    form = Valueform(initial={'busqueda': '',})
-    return render(request, "index.html", {'form': form})
-    
     if request.method == 'POST':
         form = Valueform(request.POST)
         if form.is_valid():
@@ -16,5 +13,5 @@ def index(request):
         return render(request, "index.html", {'form': form,'prediccion': prediccion})
     else:
         form = Valueform(initial={'busqueda': '',})
-    return render(request, "index.html", {'form': form})
+        return render(request, "index.html", {'form': form})
     
