@@ -8,8 +8,8 @@ def index(request):
         form = Valueform(request.POST)
         if form.is_valid():
             parametro = form.cleaned_data['busqueda']
-            #3prediccion = clasifica(parametro)
-            prediccion = 'edificio'
+            prediccion = clasifica(parametro)
+            #prediccion = 'edificio'
         return render(request, "index.html", {'form': form,'prediccion': prediccion})
     else:
         form = Valueform(initial={'busqueda': '',})
