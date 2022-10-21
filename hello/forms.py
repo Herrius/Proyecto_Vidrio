@@ -4,9 +4,6 @@ class Valueform(forms.Form):
     busqueda = forms.CharField(max_length = 100)
 
 class Value2form(forms.Form):
-    CHOICES=[('Noticias','Noticias'),('Twitter','Twitter')]
-
-    tipo = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect)
     busqueda = forms.CharField(max_length = 100)
     
 #class RenewBookForm(forms.Form):
