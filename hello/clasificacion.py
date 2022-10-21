@@ -9,10 +9,11 @@ def cargar_modelo(nombre):
     input.close()   
     return modelo
 
-def clasifica(datos):
-    
+def clasifica(datos):    
     listado = datos.split(sep=';')
-    nombre='/modelos/modelo.pkl'
-    modelo = cargar_modelo(nombre)
+    ruta = '/app/modelos/'
+    nombre='modelo.pkl'
+    modelo = cargar_modelo(ruta+nombre)
+    print(listado)
     tipo = modelo.predict(listado)
     return tipo
