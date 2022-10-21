@@ -10,7 +10,6 @@ def index(request):
     form = Valueform(initial={'busqueda': '',})
     return render(request, "index.html", {'form': form})
 
-
     
 def db(request):
     greeting = Greeting()
