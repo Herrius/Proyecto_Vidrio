@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .forms import Valueform
-#from .clasificacion import clasifica
+from .clasificacion import clasifica
 
 
 def index(request):
