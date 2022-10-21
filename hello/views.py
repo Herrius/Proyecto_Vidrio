@@ -7,7 +7,7 @@ def index(request):
     if request.method == 'POST':
         form = Valueform(request.POST)
         if form.is_valid():
-            parametro = form.cleaned_data['req']
+            parametro = form.cleaned_data['busqueda']
             #3prediccion = clasifica(parametro)
             prediccion = 'edificio'
         return render(request, "index.html", {'form': form,'prediccion': prediccion})
