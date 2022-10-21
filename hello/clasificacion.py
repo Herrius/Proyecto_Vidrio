@@ -12,7 +12,7 @@ def cargar_modelo(nombre):
 def clasifica(datos):
     
     listado = datos.split(sep=';')
-    nombre='./modelo.pkl'
+    nombre='./modelos/modelo.pkl'
     modelo = cargar_modelo(nombre)
     tipo = modelo.predict(listado)
     return tipo
