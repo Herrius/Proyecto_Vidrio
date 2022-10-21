@@ -27,6 +27,11 @@
     
   </div> <!-- row -->
    Prediccion:
-   {% if prediccion %} {{ prediccion }} 
+   {% if prediccion %} 
+       {{ prediccion }} 
+   {% else %} 
+        Pendiente clasificar
+   {% endif %}
 </div>
 {% endblock %}
+
